@@ -5,8 +5,19 @@ export default Ember.Route.extend({
     return this.store.findRecord('blog', params.blog_id);
   },
 
+  setupController(controller, model) {
+    this._super(controller, model);
+
+    controller.set('title', 'Edit Blog');
+    controller.set('buttonLabel', 'Save Changes');
+  },
+
+  renderTemplate() {
+    this.render('blogs/form');
+  },
+
   actions: {
-    saveBlog(blog) {
+    save(blog) {
       blog.save().then(() => {
         this.transitionTo('blogs');
       });

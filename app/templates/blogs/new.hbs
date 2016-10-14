@@ -1,16 +1,15 @@
 <h2>Add a new Blog</h2>
 
-<div class="form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Name</label>
-        <div class="col-sm-10">
-            {{input type="text" value=model.name class="form-control" placeholder="The name of the blog"}}
-        </div>
+<div class="row">
+
+    <div class="col-md-6">
+        {{blog-item-form item=model buttonLabel='Add to blogs list' action='save'}}
     </div>
 
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" {{action 'save' model}}>Create Blog</button>
-        </div>
+    <div class="col-md-4">
+        {{#blog-item item=model}}
+            <br/>
+        {{/blog-item}}
     </div>
+
 </div>
