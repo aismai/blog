@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">
+                    {{model.name}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        {{#each model as |blog|}}
+            {{#each blog.posts as |post|}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{post.title}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{post.body}}
+                    </div>
+                </div>
+            {{/each}}
+        {{/each}}
+
+    </div>
+</div>

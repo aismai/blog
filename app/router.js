@@ -10,6 +10,10 @@ Router.map(function() {
   this.route('blogs', function() {
     this.route('new');
     this.route('edit', { path: '/:blog_id/edit'});
+
+    this.route('show', {
+      path: ':blog_id'
+    });
   });
 });
 
