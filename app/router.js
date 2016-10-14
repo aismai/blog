@@ -13,8 +13,14 @@ Router.map(function() {
 
     this.route('show', {
       path: ':blog_id'
+    }, function () {
+      this.route('posts', {resetNamespace: true}, function() {
+        this.route('new');
+      });
     });
+
   });
+
 });
 
 export default Router;
