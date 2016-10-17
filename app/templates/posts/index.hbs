@@ -2,7 +2,7 @@
     {{#each model as |post|}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{link-to post.title 'posts.show' post}}</h3>
+                    <h3 class="panel-title">{{link-to post.title 'comments' post}}</h3>
                 </div>
                 <div class="panel-body">
                     {{post.body}}

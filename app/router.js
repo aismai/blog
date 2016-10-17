@@ -9,18 +9,21 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('blogs', function() {
     this.route('new');
-    this.route('edit', { path: '/:blog_id/edit'});
+    this.route('edit', { path: '/:blog_id/edit' });
 
     this.route('show', {
       path: ':blog_id'
     }, function () {
-      this.route('posts', {resetNamespace: true}, function() {
+      this.route('posts', { resetNamespace: true }, function() {
         this.route('new');
-        this.route('show', { path: ':post_id'});
+        this.route('show', {
+          path: ':post_id'
+        }, function () {
+          this.route('comments', { resetNamespace: true }, function() {});
+        });
       });
     });
   });
-
 });
 
 export default Router;
