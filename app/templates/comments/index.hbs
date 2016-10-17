@@ -1,9 +1,9 @@
-
-
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        Basic panel example
+{{link-to 'leave comment:' 'comments.new' model.id class="btn btn-success btn-xs"}}
+<hr>
+{{#each model.comments as |comment|}}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{comment.body}}
+        </div>
     </div>
-</div>
-
+{{/each}}

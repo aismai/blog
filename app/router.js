@@ -19,7 +19,9 @@ Router.map(function() {
         this.route('show', {
           path: ':post_id'
         }, function () {
-          this.route('comments', { resetNamespace: true }, function() {});
+          this.route('comments', { resetNamespace: true }, function() {
+            this.route('new');
+          });
         });
       });
     });
