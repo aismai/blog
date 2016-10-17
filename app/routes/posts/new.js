@@ -11,10 +11,9 @@ export default Ember.Route.extend({
     savePost(post) {
       post.save().then(() => {
         const blog = post.get('blog');
-        console.log(blog);
         blog.get('posts').pushObject(post);
         blog.save();
-        this.transitionTo('posts')
+        this.transitionTo('posts');
       });
     },
 
