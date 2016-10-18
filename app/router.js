@@ -26,6 +26,10 @@ Router.map(function() {
       });
     });
   });
+
+  this.route('users', function() {
+    this.route('new');
+  });
 });
 
 export default Router;
