@@ -3,7 +3,8 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     return this.store.createRecord('comment', {
-      post: this.modelFor('posts.show')
+      post: this.modelFor('posts.show'),
+      user: this.get('authManager.currentUser')
     });
   },
 

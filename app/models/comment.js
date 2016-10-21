@@ -4,5 +4,5 @@ export default DS.Model.extend({
   body: DS.attr('string'),
 
   user: DS.belongsTo('user'),
-  post: DS.belongsTo('post', {async: false})
+  post: DS.belongsTo('post', { async: false })
 });

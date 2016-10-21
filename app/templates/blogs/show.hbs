@@ -9,8 +9,11 @@
         </div>
     </div>
     <div class="col-md-12">
-        {{link-to 'new post' 'posts.new' model class="btn btn-primary btn-xs"}}
+        {{#if authManager.currentUser }}
+            {{link-to 'new post' 'posts.new' model class="btn btn-default btn-xs"}}
+        {{/if}}
         <hr>
+
         {{outlet}}
     </div>
 </div>

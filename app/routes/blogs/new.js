@@ -2,7 +2,9 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
   model(){
-    return this.store.createRecord('blog');
+    return this.store.createRecord('blog', {
+      user: this.get('authManager.currentUser')
+    });
   },
 
   setupController: function (controller, model) {
