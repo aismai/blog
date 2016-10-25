@@ -1,27 +1,20 @@
 import Ember from 'ember';
 
-const {
-  get,
-  set
-} = Ember;
-
 export default Ember.Service.extend({
   store: Ember.inject.service(),
-  user: Ember.Object.create(),
-  currentUser: {},
-
+  currentUser: Ember.Object.create(),
   isAuthenticated: false,
 
   checkUser(email, pass){
     this.get('store').findAll('user').then((users) =>{
-      users.forEach((obj) => {
-        if((Ember.get(obj, 'email') === email) && ( Ember.get(obj, 'password') === pass)) {
-          set(this, 'currentUser', obj);
+      users.forEach((user) => {
+        if((Ember.get(user, 'email') === email) && ( Ember.get(user, 'password') === pass)) {
           console.log('Found User in Storage');
-          set(this, 'isAuthenticated', true);
+          console.log(this.get('currentUser'));
+          this.set('currentUser', user);
+          this.set('isAuthenticated', true);
         }
       });
     });
   }
-
 });

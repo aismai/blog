@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
   beforeModel(){
     const author = this.modelFor('blogs.show').get('user');
-    if(this.get('authManager.currentUser.email') != author.get('email')){
+    if(this.get('authManager.currentUser.email') !== author.get('email')){
       console.log('NOT AN AUTHOR');
       this.transitionTo('blogs');
     }
