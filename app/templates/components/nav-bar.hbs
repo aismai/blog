@@ -15,10 +15,10 @@
                 {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
                 {{#link-to 'blogs' tagName="li"}}<a href="">Blogs</a>{{/link-to}}
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 {{#if authManager.isAuthenticated}}
-                    <p class="navbar-text">Signed in as: {{authManager.currentUser.email}}</p>
+                    <p class="navbar-text">signed in as: {{authManager.currentUser.email}}</p>
+                    <li><a href="#" {{action 'logOut'}}>Logout</a></li>
                 {{else}}
                     {{#link-to 'login' tagName="li"}}<a href="">Login</a>{{/link-to}}
                 {{/if}}

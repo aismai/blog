@@ -6,5 +6,10 @@ export default DS.Model.extend({
   posts: DS.hasMany('post'),
   user: DS.belongsTo('user'),
 
-  isValid: Ember.computed.notEmpty('name')
+  isValid: Ember.computed.notEmpty('name'),
+
+  isAuthor: Ember.computed('user.id', function () {
+    return (this.get('user.id') !== this.get('authManager.currentUser.id'))? false  : true;
+  })
+
 });

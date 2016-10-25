@@ -7,6 +7,7 @@ const {
 
 export default Ember.Service.extend({
   store: Ember.inject.service(),
+  user: Ember.Object.create(),
   currentUser: {},
 
   isAuthenticated: false,

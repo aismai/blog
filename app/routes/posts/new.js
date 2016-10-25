@@ -2,11 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
+  //redirectTo
+  //window.reload for logout
+  ////
+
   beforeModel(){
     const author = this.modelFor('blogs.show').get('user');
     if(this.get('authManager.currentUser.email') != author.get('email')){
       console.log('NOT AN AUTHOR');
-      this.transitionTo('posts');
+      this.transitionTo('blogs');
     }
   },
 
