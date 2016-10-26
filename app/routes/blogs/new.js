@@ -14,6 +14,8 @@ export default AuthenticatedRoute.extend({
     controller.set('buttonLabel', 'Create');
   },
 
+
+  //TODO: remove this method
   renderTemplate() {
     this.render('blogs/form');
   },

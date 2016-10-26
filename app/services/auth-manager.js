@@ -6,6 +6,9 @@ export default Ember.Service.extend({
   isAuthenticated: false,
 
   checkUser(email, pass){
+
+    //TODO: use 'query' method instead of findAll
+
     this.get('store').findAll('user').then((users) =>{
       users.forEach((user) => {
         if((Ember.get(user, 'email') === email) && ( Ember.get(user, 'password') === pass)) {
@@ -16,5 +19,8 @@ export default Ember.Service.extend({
         }
       });
     });
+
+    //TODO: return promise from this method
+
   }
 });
