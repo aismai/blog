@@ -12,10 +12,6 @@ export default AuthenticatedRoute.extend({
     controller.set('buttonLabel', 'Save Changes');
   },
 
-  renderTemplate() {
-    this.render('blogs/form');
-  },
-
   actions: {
     save(blog) {
       blog.save().then(() => {
@@ -35,5 +31,6 @@ export default AuthenticatedRoute.extend({
         }
       }
     }
+
   }
 });

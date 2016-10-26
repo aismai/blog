@@ -6,12 +6,22 @@
 </div>
 
 {{#each model as |blog|}}
-    {{#blog-item item=blog}}
-        {{#link-to 'blogs.edit' blog.id class='btn btn-info btn-xs'}}
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-        {{/link-to}}
-        <button class="btn btn-info btn-xs" {{action 'deleteBlog' blog}}>
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-    {{/blog-item}}
+    <div class="panel panel-info blog-item">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{#link-to 'posts' blog}}
+                {{blog.name}}
+            {{/link-to}}
+            </h3>
+        </div>
+        <div class="panel-body">
+            {{#link-to 'blogs.edit' blog.id class='btn btn-info btn-xs'}}
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            {{/link-to}}
+            <button class="btn btn-info btn-xs" {{action 'deleteBlog' blog}}>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+      {{!--TODO: move this all to non-block component--}}
+    {{!--done --}}
 {{/each}}

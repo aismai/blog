@@ -14,10 +14,6 @@ export default AuthenticatedRoute.extend({
     controller.set('buttonLabel', 'Create');
   },
 
-  renderTemplate() {
-    this.render('blogs/form');
-  },
-
   actions: {
     save(blog) {
       blog.save().then(() => {
@@ -26,7 +22,7 @@ export default AuthenticatedRoute.extend({
     },
 
     willTransition() {
-      this.controller.get('model').rollbackAttributes();
+      this.controller.get('model').unloadRecord();
     }
   }
 });

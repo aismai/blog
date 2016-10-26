@@ -1,5 +1,7 @@
 <div class="col-md-12">
-    {{#each model as |post|}}
+    {{!-- TODO: reload model before showing all posts --}}
+    <!--вытаскиваю посты из модели блога-->
+    {{#each model.posts as |post|}}
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{link-to post.title 'comments' post}}</h3>

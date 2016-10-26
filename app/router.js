@@ -29,7 +29,7 @@ Router.map(function() {
   });
 
   this.route('users', function() {
-    this.route('new');
+    this.route('new', {path: '/register'});
   });
   this.route('login');
 });

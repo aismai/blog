@@ -2,14 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  //redirectTo
-  //window.reload for logout
-  ////
-
   beforeModel(){
     const author = this.modelFor('blogs.show').get('user');
     if(this.get('authManager.currentUser.email') !== author.get('email')){
-      console.log('NOT AN AUTHOR');
       this.transitionTo('blogs');
     }
   },
@@ -26,13 +21,17 @@ export default Ember.Route.extend({
       post.save().then(() => {
         const blog = post.get('blog');
         blog.get('posts').pushObject(post);
-        blog.save();
-        this.transitionTo('posts');
+
+        blog.save().then(() => {
+          this.transitionTo('posts');
+        });
+        //TODO: use promise on save
+        // done
       });
     },
 
     willTransition() {
-      this.controller.get('model').rollbackAttributes();
+      this.controller.get('model').unloadRecord();
     }
   }
 });
