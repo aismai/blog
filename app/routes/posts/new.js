@@ -16,8 +16,15 @@ export default Ember.Route.extend({
     });
   },
 
+  setupController: function (controller, model) {
+    this._super(controller, model);
+
+    controller.set('title', 'Create new Post');
+    controller.set('buttonLabel', 'Create');
+  },
+
   actions: {
-    savePost(post) {
+    save(post) {
       post.save().then(() => {
         const blog = post.get('blog');
         blog.get('posts').pushObject(post);
@@ -33,5 +40,6 @@ export default Ember.Route.extend({
     willTransition() {
       this.controller.get('model').unloadRecord();
     }
+
   }
 });

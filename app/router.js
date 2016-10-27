@@ -16,6 +16,7 @@ Router.map(function() {
     }, function () {
       this.route('posts', { resetNamespace: true }, function() {
         this.route('new');
+        this.route('edit', { path: '/:blog_id/edit' });
 
         this.route('show', {
           path: ':post_id'
