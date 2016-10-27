@@ -1,22 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model(params){
-    return this.store.findRecord('post', params.params_id);
+  model(param) {
+    this.store.findRecord('comment', param.comment_id);
   },
 
-  setupController(controller, model) {
-    this._super(controller, model);
-
-    controller.set('title', 'Edit Post');
-    controller.set('buttonLabel', 'Save Changes');
-  },
-
+  // setupController(controller, model){
+  //   this._super(controller, model);
+  //   controller.set()
+  // },
 
   actions: {
-    save(post) {
-      post.save().then(() => {
-        this.transitionTo('posts');
+    save(comment) {
+      comment.save().then(() => {
+        this.transitionTo('comments');
       });
     },
 
@@ -34,5 +31,4 @@ export default Ember.Route.extend({
     }
 
   }
-
 });

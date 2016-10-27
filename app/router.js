@@ -16,13 +16,14 @@ Router.map(function() {
     }, function () {
       this.route('posts', { resetNamespace: true }, function() {
         this.route('new');
-        this.route('edit', { path: '/:blog_id/edit' });
+        this.route('edit', { path: '/:post_id/edit' });
 
         this.route('show', {
           path: ':post_id'
         }, function () {
           this.route('comments', { resetNamespace: true }, function() {
             this.route('new');
+            this.route('edit', { path: '/:comment_id/edit' });
           });
         });
       });
