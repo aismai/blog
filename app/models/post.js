@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   title: DS.attr('string'),
@@ -6,5 +7,7 @@ export default DS.Model.extend({
 
   user: DS.belongsTo('user'),
   blog: DS.belongsTo('blog', { async: false }),
-  comments: DS.hasMany('comment')
+  comments: DS.hasMany('comment'),
+
+  isValid: Ember.computed.notEmpty('body')
 });

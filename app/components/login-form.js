@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
   actions: {
-    authenticate() {
+    buttonClicked(param) {
       console.log('+- login-form authenticate');
       const { email, password } = this.getProperties('email', 'password');
       // this.get('authManager').findUser(email, password);
@@ -13,7 +13,7 @@ export default Ember.Component.extend({
           this.get('authManager').setCurrentUser(user)
         }
       });
-      this.sendAction('login');
+      this.sendAction('action', param);
     }
   }
 });
