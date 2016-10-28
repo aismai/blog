@@ -10,7 +10,7 @@ export default Ember.Component.extend({
       //TODO: use promise from 'findUser' method
       this.get('authManager').findUser(email, password).then((user) => {
         if (user){
-          this.get('authManager').setCurrentUser(user)
+          this.get('authManager').setCurrentUser(user);
         }
       });
       this.sendAction('action', param);

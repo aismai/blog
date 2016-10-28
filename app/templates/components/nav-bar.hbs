@@ -1,28 +1,15 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            {{#link-to 'index' class="navbar-brand"}}Gecko{{/link-to}}
-        </div>
+<header id="main-navigation" class="clearFix">
+    {{#link-to 'index' class="name"}}Gecko{{/link-to}}
+    <nav>
+        {{#link-to 'index' }}<a href="">Home</a>{{/link-to}}
+        {{#link-to 'blogs' }}<a href="">Blogs</a>{{/link-to}}
+        {{#if authManager.isAuthenticated}}
+            <span>signed in as: {{authManager.currentUser.email}}</span>
+            <a href="#" {{action 'logOut'}}>Logout</a>
+        {{else}}
+            {{#link-to 'login'}}Login{{/link-to}}
+        {{/if}}
+    </nav>
+</header>
 
-        <div class="collapse navbar-collapse" id="main-navbar">
-            <ul class="nav navbar-nav">
-                {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
-                {{#link-to 'blogs' tagName="li"}}<a href="">Blogs</a>{{/link-to}}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {{#if authManager.isAuthenticated}}
-                    <p class="navbar-text">signed in as: {{authManager.currentUser.email}}</p>
-                    <li><a href="#" {{action 'logOut'}}>Logout</a></li>
-                {{else}}
-                    {{#link-to 'login' tagName="li"}}<a href="">Login</a>{{/link-to}}
-                {{/if}}
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+
