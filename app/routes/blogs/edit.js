@@ -1,15 +1,21 @@
 import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
-  model(params){
-    return this.store.findRecord('blog', params.blog_id);
+
+  beforeModel(transition) {
+    this._super(...arguments);
+    console.log(transition.params);
+    this.store.findRecord('blog', transition.params['blogs.edit'].blog_id).then((blog) => {
+      if(!blog.get('isAuthor')) {
+        transition.abort();
+      } else {
+        transition.retry()
+      }
+    });
   },
 
-  setupController(controller, model) {
-    this._super(controller, model);
-
-    controller.set('title', 'Edit Blog');
-    controller.set('buttonLabel', 'Save Changes');
+  model(params){
+    return this.store.findRecord('blog', params.blog_id);
   },
 
   actions: {
@@ -25,7 +31,7 @@ export default AuthenticatedRoute.extend({
       if (model.get('hasDirtyAttributes')) {
         let confirmation = confirm("Your changes haven't saved yet. Would you like to leave this form?");
         if (confirmation) {
-          model.rollbackAttributes();
+          model.unloadRecord();
         } else {
           transition.abort();
         }

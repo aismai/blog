@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
   model() {
     //TODO: reload model before showing all posts
     //done

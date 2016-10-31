@@ -22,8 +22,8 @@ Router.map(function() {
           path: ':post_id'
         }, function () {
           this.route('comments', { resetNamespace: true }, function() {
-            this.route('new');
             this.route('edit', { path: '/:comment_id/edit' });
+            this.route('new');
           });
         });
       });

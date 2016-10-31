@@ -1,17 +1,16 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
+
+  beforeModel(transition) {
+    this._super(transition);
+    const blog = this.modelFor('blogs.show');
+      if(!blog.get('isAuthor')) this.transitionTo('posts');
+  },
+
   model(params){
     return this.store.findRecord('post', params.params_id);
   },
-
-  setupController(controller, model) {
-    this._super(controller, model);
-
-    controller.set('title', 'Edit Post');
-    controller.set('buttonLabel', 'Save Changes');
-  },
-
 
   actions: {
     save(post) {

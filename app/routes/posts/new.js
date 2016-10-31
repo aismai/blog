@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
 
   beforeModel(){
-    const author = this.modelFor('blogs.show').get('user');
-    if(this.get('authManager.currentUser.email') !== author.get('email')){
+    const blog = this.modelFor('blogs.show');
+    if(!blog.get('isAuthor')){
       this.transitionTo('blogs');
     }
   },
@@ -14,13 +14,6 @@ export default Ember.Route.extend({
       blog: this.modelFor('blogs.show'),
       user: this.get('authManager.currentUser')
     });
-  },
-
-  setupController: function (controller, model) {
-    this._super(controller, model);
-
-    controller.set('title', 'Create new Post');
-    controller.set('buttonLabel', 'Create');
   },
 
   actions: {

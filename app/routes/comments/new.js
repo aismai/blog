@@ -1,17 +1,12 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
+
   model() {
     return this.store.createRecord('comment', {
       post: this.modelFor('posts.show'),
       user: this.get('authManager.currentUser')
     });
-  },
-
-  setupController: function (controller, model) {
-    this._super(controller, model);
-
-    controller.set('title', 'Leave a  Comment');
   },
 
   actions: {

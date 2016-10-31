@@ -1,14 +1,17 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
+
+  beforeModel(transition) {
+    this._super(...arguments);
+    this.store.findRecord('comment', transition.params['comments.edit'].comment_id).then((comment) => {
+      if(!comment.get('isAuthor')) transition.abort();
+    });
+  },
+
   model(param) {
     this.store.findRecord('comment', param.comment_id);
   },
-
-  // setupController(controller, model){
-  //   this._super(controller, model);
-  //   controller.set()
-  // },
 
   actions: {
     save(comment) {
