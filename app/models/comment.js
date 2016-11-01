@@ -8,6 +8,8 @@ export default DS.Model.extend({
   post: DS.belongsTo('post', { async: false }),
 
   isValid: Ember.computed.notEmpty('body'),
+
+  //TODO: refactor
   isAuthor: Ember.computed('user.id', function () {
     return (this.get('user.id') !== this.get('authManager.currentUser.id'))? false : true;
   })
