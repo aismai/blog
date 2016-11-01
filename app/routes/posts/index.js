@@ -1,7 +1,21 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
   model() {
-    return this.modelFor('blogs.show').get('posts');
+    return this.modelFor('blogs.show').reload();
+  },
+
+  actions: {
+    deletePost(post) {
+      let confirmation = confirm('Are you sure?');
+
+      if (confirmation) {
+        let blog = post.get('blog');
+        blog.get('posts').removeObject(post);
+        blog.save().then(() => {
+          post.destroyRecord();
+        });
+      }
+    }
   }
 });

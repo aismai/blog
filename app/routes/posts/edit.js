@@ -3,20 +3,19 @@ import AuthenticatedRoute from '../authenticated-route';
 export default AuthenticatedRoute.extend({
 
   model(params){
-    const blogPromise =  this.store.findRecord('blog', params.blog_id);
-    blogPromise.then((blog) => {
-        if(!blog.get('isAuthor')) {
-          console.log('not the author');
-          this.transitionTo('blogs');
-        }
+    const postPromise = this.store.findRecord('post', params.post_id);
+    postPromise.then((post) => {
+      if(!post.get('blog.isAuthor')){
+        this.transitionTo('posts');
+      }
     });
-    return blogPromise;
+    return postPromise;
   },
 
   actions: {
-    save(blog) {
-      blog.save().then(() => {
-        this.transitionTo('blogs');
+    save(post) {
+      post.save().then(() => {
+        this.transitionTo('posts');
       });
     },
 
@@ -34,4 +33,5 @@ export default AuthenticatedRoute.extend({
     }
 
   }
+
 });

@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
+
   model() {
     return this.store.createRecord('comment', {
       post: this.modelFor('posts.show'),
@@ -13,15 +14,14 @@ export default Ember.Route.extend({
       comment.save().then(() => {
         const post = comment.get('post');
         post.get('comments').pushObject(comment);
-        post.save();
-        this.transitionTo('comments');
+        post.save().then(() => {
+          this.transitionTo('comments');
+        });
       });
-
-      console.log('save action comments/new');
     },
 
     willTransition() {
-      this.controller.get('model').rollbackAttributes();
+      this.controller.get('model').unloadRecord();
     }
   }
 });

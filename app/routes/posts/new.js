@@ -1,44 +1,34 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
 
-  //redirectTo
-  //window.reload for logout
-  ////
-
-  beforeModel(){
-    const author = this.modelFor('blogs.show').get('user');
-    if(this.get('authManager.currentUser.email') !== author.get('email')){
-      console.log('NOT AN AUTHOR');
-      this.transitionTo('blogs');
+  model() {
+    const blog = this.modelFor('blogs.show');
+    if(!blog.get('isAuthor')){
+      this.transitionTo('posts');
+    } else {
+      return this.store.createRecord('post', {
+        blog: blog,
+        user: this.get('authManager.currentUser')
+      });
     }
   },
 
-  model() {
-    return this.store.createRecord('post', {
-      blog: this.modelFor('blogs.show'),
-      user: this.get('authManager.currentUser')
-    });
-  },
-
   actions: {
-    savePost(post) {
+    save(post) {
       post.save().then(() => {
         const blog = post.get('blog');
         blog.get('posts').pushObject(post);
-        blog.save();
 
-        //TODO: use promise on save
-
-        this.transitionTo('posts');
+        blog.save().then(() => {
+          this.transitionTo('posts');
+        });
       });
     },
 
     willTransition() {
-
-      //TODO: use unloadRecord
-
-      this.controller.get('model').rollbackAttributes();
+      this.controller.get('model').unloadRecord();
     }
+
   }
 });
