@@ -1,10 +1,8 @@
 <header id="main-navigation" class="clearFix">
-    {{#link-to 'index' class="name"}}Gecko{{/link-to}}
+    {{#link-to 'blogs' class="name"}}Gecko{{/link-to}}
     <nav>
-        {{#link-to 'index' }}<a href="">Home</a>{{/link-to}}
         {{#link-to 'blogs' }}<a href="">Blogs</a>{{/link-to}}
         {{#if authManager.isAuthenticated}}
-            <span>signed in as: {{authManager.currentUser.email}}</span>
             <a href="#" {{action 'logOut'}}>Logout</a>
         {{else}}
             {{#link-to 'login'}}Login{{/link-to}}

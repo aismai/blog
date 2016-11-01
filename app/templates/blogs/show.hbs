@@ -1,18 +1,8 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title text-center">
-                    {{link-to model.name 'posts'}}
-                </h3>
-            </div>
-        </div>
+<h1 id="page-title">{{link-to model.name 'posts'}}</h1>
+
+{{#if model.isAuthor}}
+    <div id="new-post">
+    {{link-to 'new post' 'posts.new' model class="button"}}
     </div>
-    <div class="col-md-12">
-        {{#if model.isAuthor}}
-            {{link-to 'new post' 'posts.new' model class="btn btn-default btn-xs"}}
-        {{/if}}
-        <hr>
-        {{outlet}}
-    </div>
-</div>
+{{/if}}
+{{outlet}}
