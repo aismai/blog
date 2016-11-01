@@ -3,8 +3,12 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   store: Ember.inject.service(),
   currentUser: Ember.Object.create(),
+
+  //TODO: refactor this field to computed property based on currentUser
   isAuthenticated: false,
 
+
+  //TODO: use queryRecord
   findUser(email, pass){
     return this.get('store').query('user', {  email: email, password: pass })
       .then(function(users) {
