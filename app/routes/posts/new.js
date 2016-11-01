@@ -2,18 +2,16 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
 
-  beforeModel(){
+  model() {
     const blog = this.modelFor('blogs.show');
     if(!blog.get('isAuthor')){
-      this.transitionTo('blogs');
+      this.transitionTo('posts');
+    } else {
+      return this.store.createRecord('post', {
+        blog: blog,
+        user: this.get('authManager.currentUser')
+      });
     }
-  },
-
-  model() {
-    return this.store.createRecord('post', {
-      blog: this.modelFor('blogs.show'),
-      user: this.get('authManager.currentUser')
-    });
   },
 
   actions: {
@@ -25,8 +23,6 @@ export default AuthenticatedRoute.extend({
         blog.save().then(() => {
           this.transitionTo('posts');
         });
-        //TODO: use promise on save
-        // done
       });
     },
 

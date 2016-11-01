@@ -2,8 +2,6 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
   model() {
-    //TODO: reload model before showing all posts
-    //done
     return this.modelFor('blogs.show').reload();
   },
 

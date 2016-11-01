@@ -10,8 +10,6 @@ export default Ember.Service.extend({
       .then(function(users) {
       return users.get("firstObject");
     });
-    //TODO: return promise from this method
-    // done
   },
 
   setCurrentUser(user){

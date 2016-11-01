@@ -2,14 +2,14 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
 
-  beforeModel(transition) {
-    this._super(transition);
-    const blog = this.modelFor('blogs.show');
-      if(!blog.get('isAuthor')) this.transitionTo('posts');
-  },
-
   model(params){
-    return this.store.findRecord('post', params.params_id);
+    const postPromise = this.store.findRecord('post', params.post_id);
+    postPromise.then((post) => {
+      if(!post.get('blog.isAuthor')){
+        this.transitionTo('posts');
+      }
+    });
+    return postPromise;
   },
 
   actions: {
@@ -25,7 +25,7 @@ export default AuthenticatedRoute.extend({
       if (model.get('hasDirtyAttributes')) {
         let confirmation = confirm("Your changes haven't saved yet. Would you like to leave this form?");
         if (confirmation) {
-          model.rollbackAttributes();
+          model.unloadRecord();
         } else {
           transition.abort();
         }

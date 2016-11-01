@@ -1,16 +1,14 @@
 import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
-
-  beforeModel(transition) {
-    this._super(...arguments);
-    this.store.findRecord('comment', transition.params['comments.edit'].comment_id).then((comment) => {
-      if(!comment.get('isAuthor')) transition.abort();
-    });
-  },
-
   model(param) {
-    this.store.findRecord('comment', param.comment_id);
+    const commentPromise = this.store.findRecord('comment', param.comment_id);
+    commentPromise.then((comment) => {
+      if(!comment.get('isAuthor')) {
+        this.transitionTo('comments');
+      }
+    });
+    return commentPromise;
   },
 
   actions: {
@@ -26,7 +24,7 @@ export default AuthenticatedRoute.extend({
       if (model.get('hasDirtyAttributes')) {
         let confirmation = confirm("Your changes haven't saved yet. Would you like to leave this form?");
         if (confirmation) {
-          model.rollbackAttributes();
+          model.unloadRecord();
         } else {
           transition.abort();
         }
