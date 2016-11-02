@@ -16,10 +16,9 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(post) {
-      post.save().then(() => {
-        const blog = post.get('blog');
-        blog.get('posts').pushObject(post);
-
+      post.save().then((savedPost) => {
+        const blog = savedPost.get('blog');
+        blog.get('posts').pushObject(savedPost);
         blog.save().then(() => {
           this.transitionTo('posts');
         });
