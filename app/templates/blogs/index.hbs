@@ -1,5 +1,6 @@
 <div class="col-1 about homepage-content">
     <div id="add-blog">
+        {{link-to 'Add Type' 'blog-type.new' class='button'}}
         {{link-to 'Add Blog' 'blogs.new' class='button'}}
     </div>
 </div>
@@ -9,7 +10,7 @@
     {{#each model as |blog|}}
         <div class="blog-block">
             <h3>{{link-to blog.name 'posts' blog}}</h3>
-            <p class="date">{{blog.currentUser}}</p>
+            <p class="date">{{blog.blogType.name}}</p>
             <p class="date">
                 {{#if blog.isAuthor}}
                     {{link-to 'edit' 'blogs.edit' blog.id}}

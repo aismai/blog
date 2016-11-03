@@ -1,0 +1,9 @@
+<div class="skinny-wrapper">
+    <label>Name</label>
+    <div>
+        {{input type="text" value=model.name  placeholder="The name of the category"}}
+    </div>
+    <div>
+        <input type="submit" {{action 'save' model}} placeholder='Save'>
+    </div>
+</div>

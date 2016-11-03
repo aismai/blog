@@ -2,12 +2,6 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
 
-  model(){
-    return this.store.createRecord('blog', {
-      user: this.get('authManager.currentUser')
-    });
-  },
-
   actions: {
     save(blog) {
       blog.save().then(() => {
@@ -15,8 +9,8 @@ export default AuthenticatedRoute.extend({
       });
     },
 
-    willTransition() {
-      this.controller.get('model').unloadRecord();
-    }
+    // willTransition() {
+    //   this.controller.get('model').unloadRecord();
+    // }
   }
 });
