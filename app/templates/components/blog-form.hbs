@@ -1,13 +1,18 @@
 <div class="skinny-wrapper">
     <label>Name</label>
     <div>
-        {{input type="text" value=item.name  placeholder="The name of the Blog"}}
+        {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
     </div>
+    <select>
+        {{#each blogTypeList as |type|}}
+            <option>{{type.name}}</option>
+        {{/each}}
+    </select>
     <label>Description</label>
     <div>
-        {{textarea value=item.description cols="80" rows="6" class="form-control" placeholder="..."}}
+        {{textarea value=blog.description cols="80" rows="6" class="form-control" placeholder="..."}}
     </div>
     <div>
-        <input type="submit" {{action 'buttonClicked' item}} placeholder={{buttonLabel}}>
+        <input type="submit" {{action 'buttonClicked' blog}} placeholder={{buttonLabel}}>
     </div>
 </div>
