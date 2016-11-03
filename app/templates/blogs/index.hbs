@@ -10,7 +10,7 @@
     {{#each model as |blog|}}
         <div class="blog-block">
             <h3>{{link-to blog.name 'posts' blog}}</h3>
-            <p class="date">Fri 10 2016</p>
+            <p class="date">{{blog.blogType.name}}</p>
             <p class="date">
                 {{#if blog.isAuthor}}
                     {{link-to 'edit' 'blogs.edit' blog.id}}

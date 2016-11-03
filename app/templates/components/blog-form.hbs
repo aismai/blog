@@ -3,11 +3,17 @@
     <div>
         {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
     </div>
-    <select>
-        {{#each blogTypeList as |type|}}
-            <option>{{type.name}}</option>
-        {{/each}}
-    </select>
+
+        {{#power-select
+                selected=type
+                placeholder="Please, select category"
+                options=blogTypeList
+                onchange=(action "chooseBlogType")
+        as |type|
+        }}
+            {{type.name}}
+        {{/power-select}}
+
     <label>Description</label>
     <div>
         {{textarea value=blog.description cols="80" rows="6" class="form-control" placeholder="..."}}
