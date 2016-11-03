@@ -5,13 +5,11 @@ export default Ember.Service.extend({
   currentUser: Ember.Object.create(),
 
   //TODO: refactor this field to computed property based on currentUser
-  isAuthenticated: false,
-  // isAuthenticated: Ember.computed(function () {
-  // }),
+  // isAuthenticated: false,
+  isAuthenticated: Ember.computed(function () {
+    return !!this.get('currentUser.id');
+  }),
 
-
-  //TODO: use queryRecord
-  //localStorage
   findUser(email, pass){
     return this.get('store').query('user', {  email: email, password: pass })
       .then(function(users) {

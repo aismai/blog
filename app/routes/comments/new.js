@@ -11,17 +11,13 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(comment) {
-
       //TODO: use saved object in 'then' method in all promises
-      // comment.save().then((savedComment) => {});
       comment.save().then((savedComment) => {
-
         const post = savedComment.get('post');
         post.get('comments').pushObject(savedComment);
         post.save().then(() => {
           this.transitionTo('comments');
         });
-
       });
     },
 
