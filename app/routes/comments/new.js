@@ -14,6 +14,9 @@ export default AuthenticatedRoute.extend({
       //TODO: use saved object in 'then' method in all promises
       comment.save().then((savedComment) => {
         const post = savedComment.get('post');
+        const user = savedComment.get('user');
+        user.get('comments').pushObject(savedComment);
+        user.save();
         post.get('comments').pushObject(savedComment);
         post.save().then(() => {
           this.transitionTo('comments');

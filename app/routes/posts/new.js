@@ -18,6 +18,9 @@ export default AuthenticatedRoute.extend({
     save(post) {
       post.save().then((savedPost) => {
         const blog = savedPost.get('blog');
+        const user = savedPost.get('user');
+        user.get('posts').pushObject(savedPost);
+        user.save();
         blog.get('posts').pushObject(savedPost);
         blog.save().then(() => {
           this.transitionTo('posts');

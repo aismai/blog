@@ -5,7 +5,7 @@ export default DS.Model.extend({
   title: DS.attr('string'),
   body: DS.attr('string'),
 
-  user: DS.belongsTo('user'),
+  user: DS.belongsTo('user', { async: false }),
   blog: DS.belongsTo('blog', { async: false }),
   comments: DS.hasMany('comment'),
 

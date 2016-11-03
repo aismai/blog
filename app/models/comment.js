@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default DS.Model.extend({
   body: DS.attr('string'),
 
-  user: DS.belongsTo('user'),
+  user: DS.belongsTo('user', { async: false }),
   post: DS.belongsTo('post', { async: false }),
 
   isValid: Ember.computed.notEmpty('body'),

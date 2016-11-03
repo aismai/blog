@@ -7,7 +7,7 @@ export default DS.Model.extend({
   description: DS.attr('string'),
 
   posts: DS.hasMany('post'),
-  user: DS.belongsTo('user'),
+  user: DS.belongsTo('user',{ async: false }),
   blogType: DS.belongsTo('blog-type'),
 
   isValid: Ember.computed.notEmpty('name'),
