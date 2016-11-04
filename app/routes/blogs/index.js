@@ -8,8 +8,10 @@ export default AuthenticatedRoute.extend({
   actions: {
     deleteBlog(blog) {
       let confirmation = confirm('Are you sure?');
-
       if (confirmation) {
+        const user = blog.get('user');
+        user.get('blogs').removeObject(blog);
+        user.save();
         blog.destroyRecord();
       }
     }

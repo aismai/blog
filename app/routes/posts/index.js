@@ -11,6 +11,9 @@ export default AuthenticatedRoute.extend({
 
       if (confirmation) {
         let blog = post.get('blog');
+        let user = post.get('user');
+        user.get('posts').removeObject(post);
+        user.save();
         blog.get('posts').removeObject(post);
         blog.save().then(() => {
           post.destroyRecord();

@@ -11,7 +11,9 @@ export default AuthenticatedRoute.extend({
 
       if (confirmation) {
         let post = comment.get('post');
-        console.log('i am not showing up');
+        let user = comment.get('user');
+        user.get('comments').removeObject(comment);
+        user.save();
         post.get('comments').removeObject(comment);
         post.save().then(() => {
           comment.destroyRecord();

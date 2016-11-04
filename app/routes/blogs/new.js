@@ -13,8 +13,5 @@ export default AuthenticatedRoute.extend({
       });
     },
 
-    // willTransition() {
-    //   this.controller.get('model').unloadRecord();
-    // }
   }
 });

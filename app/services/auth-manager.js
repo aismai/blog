@@ -5,8 +5,7 @@ export default Ember.Service.extend({
   currentUser: Ember.Object.create(),
 
   //TODO: refactor this field to computed property based on currentUser
-  // isAuthenticated: false,
-  isAuthenticated: Ember.computed(function () {
+  isAuthenticated: Ember.computed('currentUser.id', function () {
     return !!this.get('currentUser.id');
   }),
 
@@ -19,7 +18,6 @@ export default Ember.Service.extend({
 
   setCurrentUser(user){
     this.set('currentUser', user);
-    this.set('isAuthenticated', true);
   }
 
 });
