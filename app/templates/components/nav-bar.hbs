@@ -3,6 +3,7 @@
     <nav>
         {{#link-to 'blogs' }}<a href="">Blogs</a>{{/link-to}}
         {{#if authManager.isAuthenticated}}
+            {{link-to 'Profile' 'users.show' authManager.currentUser }}
             <a href="#" {{action 'logOut'}}>Logout</a>
         {{else}}
             {{#link-to 'login'}}Login{{/link-to}}

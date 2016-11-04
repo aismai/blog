@@ -9,6 +9,7 @@ export default Ember.Component.extend({
       this.get('authManager').findUser(email, password).then((user) => {
         if (user){
           this.get('authManager').setCurrentUser(user);
+          this.get('authManager').lastLogin(user);
         }
       });
       this.sendAction('action', userParams);
