@@ -296,3 +296,18 @@ input[type="submit"], .button {
     padding: 0.5em 1em;
   }
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

@@ -1,7 +1,15 @@
 import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
-  model(){
+  queryParams: {
+    user: {refreshModel: true}
+  },
+
+  model(param, transition){
+    const user_id = transition.queryParams.user;
+    if (user_id) {
+      return this.store.query('blog', { user: user_id });
+    }
     return this.store.findAll('blog');
   },
 
