@@ -9,10 +9,12 @@ export default AuthenticatedRoute.extend({
     deleteBlog(blog) {
       let confirmation = confirm('Are you sure?');
       if (confirmation) {
-        const user = blog.get('user');
-        user.get('blogs').removeObject(blog);
-        user.save();
-        blog.destroyRecord();
+        const promiseUser = blog.get('user');
+        promiseUser.then((user) => {
+          user.get('blogs').removeObject(blog);
+          user.save();
+          blog.destroyRecord();
+        });
       }
     }
   }

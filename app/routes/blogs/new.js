@@ -6,9 +6,11 @@ export default AuthenticatedRoute.extend({
     save(blog) {
       blog.save().then((savedBlog) => {
         const user = savedBlog.get('user');
-        user.get('blogs').pushObject(savedBlog);
-        user.save().then(() => {
-          this.transitionTo('blogs');
+        user.then((user) => {
+          user.get('blogs').pushObject(savedBlog);
+          user.save().then(() => {
+            this.transitionTo('blogs');
+          });
         });
       });
     },

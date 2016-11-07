@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   },
 
   willDestroyElement() {
-    this.get('blog').unloadRecord();
+    // this.get('blog').unloadRecord();
   },
 
   actions: {
