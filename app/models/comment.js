@@ -9,7 +9,6 @@ export default DS.Model.extend({
 
   isValid: Ember.computed.notEmpty('body'),
 
-  //TODO: refactor
   isAuthor: Ember.computed('user.id', function () {
     return (this.get('user.id') === this.get('authManager.currentUser.id'));
   })

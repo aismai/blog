@@ -1,16 +1,14 @@
 import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
-  queryParams: {
-    user: {refreshModel: true}
+  model(){
+    return this.store.findAll('blog');
   },
 
-  model(param, transition){
-    const user_id = transition.queryParams.user;
-    if (user_id) {
-      return this.store.query('blog', { user: user_id });
+  resetController(controller, isExiting, transition) {
+    if (isExiting) {
+      controller.set('user', null);
     }
-    return this.store.findAll('blog');
   },
 
   actions: {

@@ -14,18 +14,14 @@ export default Ember.Component.extend({
       });
     this.set('blog', blog);
   },
-
   willDestroyElement() {
     // this.get('blog').unloadRecord();
   },
-
   actions: {
     chooseBlogType(type){
       const selectedType = this.set('type', type);
       this.get('blog').set('blogType', selectedType);
     },
-
-    //TODO: rename 'param' in all components
     buttonClicked(blogParams) {
       this.sendAction('action', blogParams);
     }

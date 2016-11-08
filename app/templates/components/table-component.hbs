@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        {{#each fieldNames as |field|}}
+            <th>{{field}}</th>
+        {{/each}}
+    </tr>
+    {{#each items as |item|}}
+    <tr>
+        {{#each fieldNames as |field|}}
+        <td>{{get item field}}</td>
+        {{/each}}
+    </tr>
+    {{/each}}
+</table>
