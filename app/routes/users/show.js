@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
   model(user) {
     return this.store.findRecord('user', user.user_id);
   }

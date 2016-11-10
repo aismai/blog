@@ -5,7 +5,7 @@ export default AuthenticatedRoute.extend({
     return this.store.findAll('blog');
   },
 
-  resetController(controller, isExiting, transition) {
+  resetController(controller, isExiting) {
     if (isExiting) {
       controller.set('user', null);
     }
