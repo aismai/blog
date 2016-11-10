@@ -12,7 +12,7 @@ export default DS.Model.extend({
   }),
 
   login: DS.attr('date'),
-
+  role: DS.belongsTo('role'),
   blogs: DS.hasMany('blog'),
   posts: DS.hasMany('post'),
   comments: DS.hasMany('comment'),

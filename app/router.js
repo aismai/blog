@@ -38,6 +38,16 @@ Router.map(function() {
     this.route('new');
   });
   this.route('login');
+
+  this.route('roles', function() {
+
+    this.route('new');
+  });
+
+  this.route('permissions', function() {
+    this.route('new');
+  });
+
 });
 
 export default Router;

@@ -2,6 +2,7 @@
     {{#link-to 'blogs' class="name"}}Gecko{{/link-to}}
     <nav>
         {{#link-to 'blogs' }}<a href="">Blogs</a>{{/link-to}}
+        {{link-to 'Role' 'roles'}}
         {{#if authManager.isAuthenticated}}
             {{link-to 'Users' 'users'}}
             {{link-to 'Profile' 'users.show' authManager.currentUser }}
