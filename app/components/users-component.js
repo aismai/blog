@@ -8,12 +8,9 @@ export default Ember.Component.extend({
 
   actions: {
     setUserRole(user, test, role) {
-      console.log(user.get('email'));
       const selected = this.set('role', role);
       user.set('role', selected);
       user.save();
-      console.log(user.get('role.name'));
-
     },
     deleteUser(userParams) {
       console.log('component: delete user action');

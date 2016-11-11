@@ -1,9 +1,15 @@
 <div class="skinny-wrapper wrapper-padding">
     <label>
-        Title
+        name:
     </label>
     <br>
     {{input type="text" value=model.name class="form-control" placeholder="Permission name"}}
+    <br>
+    <label>
+        code:
+    </label>
+    <br>
+    {{input type="text" value=model.code class="form-control" placeholder="enter code: permissionName"}}
     <br>
     <input type="submit" {{action 'save' model}}  placeholder='save'>
 </div>

@@ -10,6 +10,7 @@ export default Ember.Service.extend({
 
   lastLogin(user) {
     user.set('login', new Date());
+    user.save();
   },
 
   findUser(email, pass){
