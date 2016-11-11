@@ -1,0 +1,33 @@
+<table>
+    <tr>
+        <th>email</th>
+        <th>blogs</th>
+        <th>registration</th>
+        <th>last login</th>
+        <th>role</th>
+        <th>actions</th>
+    </tr>
+    {{#each items as |user|}}
+        <tr>
+            <td>{{user.email}}</td>
+            <td>{{user.blogs.length}}</td>
+            <td>{{user.registrationDate}}</td>
+            <td>{{user.lastLogin}}</td>
+            <td>
+                {{#power-select
+                        selected=role
+                        options=roles
+                        onchange=(action "setUserRole" user role)
+                as |role|
+                }}
+                    {{role.name}}
+                {{/power-select}}
+            </td>
+            <td>
+                <button {{action 'deleteUser' user}}>
+                    delete
+                </button>
+            </td>
+        </tr>
+    {{/each}}
+</table>
