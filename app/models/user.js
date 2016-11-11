@@ -20,10 +20,10 @@ export default DS.Model.extend({
 
 
   registrationDate: Ember.computed(function () {
-    return moment(this.get('registration')).format("DD-MM-YYYY");
+    return moment(this.get('registration')).format("DD.MM.YYYY");
   }),
 
   lastLogin: Ember.computed('login', function () {
-    return moment(this.get('login')).format("DD-MM-YYYY, HH:mm:ss");
+    return moment(this.get('login')).format("DD.MM.YYYY, HH:mm:ss");
   })
 });

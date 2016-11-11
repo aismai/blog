@@ -8,6 +8,10 @@ export default Ember.Service.extend({
     return !!this.get('currentUser.id');
   }),
 
+  isAdmin: Ember.computed('currentUser.role.name', function () {
+    return (this.get('currentUser.role.name') === 'Admin');
+  }),
+
   lastLogin(user) {
     user.set('login', new Date());
     user.save();

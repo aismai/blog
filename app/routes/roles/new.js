@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  // TODO: close route != admin
   actions: {
 
     save(role) {

@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    setUserRole(user, test, role) {
+    setUserRole(user, ignore, role) {
       const selected = this.set('role', role);
       user.set('role', selected);
       user.save();
@@ -17,5 +17,4 @@ export default Ember.Component.extend({
       this.sendAction('action', userParams);
     }
   }
-
 });

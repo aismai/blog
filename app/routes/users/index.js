@@ -2,7 +2,14 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
   model() {
-    return this.store.findAll('user');
+    const usersPromise = this.store.findAll('user');
+    usersPromise.then(() => {
+      if(this.get('authManager.currentUser.role.name') != 'Admin') {
+        this.transitionTo('blogs');
+      }
+    });
+
+    return usersPromise;
   },
 
   actions: {

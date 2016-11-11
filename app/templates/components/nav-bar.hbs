@@ -4,7 +4,9 @@
         {{#link-to 'blogs' }}<a href="">Blogs</a>{{/link-to}}
         {{link-to 'Role' 'roles'}}
         {{#if authManager.isAuthenticated}}
-            {{link-to 'Users' 'users'}}
+            {{#if authManager.isAdmin}}
+                {{link-to 'Users' 'users'}}
+            {{/if}}
             {{link-to 'Profile' 'users.show' authManager.currentUser }}
             <a href="#" {{action 'logOut'}}>Logout</a>
         {{else}}

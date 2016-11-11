@@ -9,7 +9,7 @@
     </tr>
     {{#each items as |user|}}
         <tr>
-            <td>{{user.email}}</td>
+            <td>{{link-to user.email 'users.show' user.id}}</td>
             <td>{{user.blogs.length}}</td>
             <td>{{user.registrationDate}}</td>
             <td>{{user.lastLogin}}</td>
