@@ -1,4 +1,5 @@
-<table>
+<table class="ui celled table">
+    <thead>
     <tr>
         <th>email</th>
         <th>blogs</th>
@@ -7,6 +8,7 @@
         <th>role</th>
         <th>actions</th>
     </tr>
+    </thead>
     {{#each items as |user|}}
         <tr>
             <td>{{link-to user.email 'users.show' user.id}}</td>
@@ -24,7 +26,7 @@
                 {{/power-select}}
             </td>
             <td>
-                <button {{action 'deleteUser' user}}>
+                <button {{action 'deleteUser' user }} class="ui negative basic button">
                     delete
                 </button>
             </td>

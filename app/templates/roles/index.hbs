@@ -1,11 +1,14 @@
 {{link-to 'new role' 'roles.new'}}
 
-<table>
+<table class="ui celled table">
+    <thead>
     <tr>
         <th>name</th>
         <th colspan="3">permissions</th>
         <th>actions</th>
     </tr>
+    </thead>
+    <tbody>
     {{#each model as |role|}}
         <tr>
             <td>{{role.name}}</td>
@@ -21,4 +24,5 @@
             </td>
         </tr>
     {{/each}}
+    </tbody>
 </table>

@@ -1,4 +1,5 @@
-<table>
+<table class="ui celled table">
+    <thead>
     <tr>
         <th>email</th>
         <th>blogs</th>
@@ -8,7 +9,8 @@
         <th>login</th>
         <th colspan="3">permissions</th>
     </tr>
-
+    </thead>
+    <tbody>
         <tr>
             <td>{{model.email}}</td>
             <td>{{link-to model.blogs.length 'blogs'  (query-params user= model.id)}}</td>
@@ -20,5 +22,5 @@
                 <td>{{permission.code}}</td>
             {{/each}}
         </tr>
-
+    </tbody>
 </table>

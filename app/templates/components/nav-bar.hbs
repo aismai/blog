@@ -1,18 +1,24 @@
-<header id="main-navigation" class="clearFix">
-    {{#link-to 'blogs' class="name"}}Gecko{{/link-to}}
-    <nav>
-        {{#link-to 'blogs' }}<a href="">Blogs</a>{{/link-to}}
-        {{link-to 'Role' 'roles'}}
+<div class="ui fixed menu">
+    <div class="ui container">
+        {{#link-to 'blogs' class="header item"}}Gecko{{/link-to}}
+        {{#link-to 'blogs' class='item'}}Blogs{{/link-to}}
         {{#if authManager.isAuthenticated}}
-            {{#if authManager.isAdmin}}
-                {{link-to 'Users' 'users'}}
-            {{/if}}
-            {{link-to 'Profile' 'users.show' authManager.currentUser }}
-            <a href="#" {{action 'logOut'}}>Logout</a>
+            {{link-to 'Profile' 'users.show' authManager.currentUser  class='item'}}
+            {{!#if authManager.isAdmin}}
+                <div class="ui simple dropdown item">
+                    Admin
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        {{#link-to 'users' class='item'}}<i class="users icon"></i>Users{{/link-to}}
+                        {{#link-to 'roles' class='item'}}<i class="empire icon"></i>Role{{/link-to}}
+                        {{#link-to 'permissions.new' class='item'}}
+                            <i class="unlock alternate icon"></i>Permissions{{/link-to}}
+                    </div>
+                </div>
+            {{!/if}}
+            <a href="#" {{action 'logOut'}} class='right item'><i class="sign out icon"></i></a>
         {{else}}
-            {{#link-to 'login'}}Login{{/link-to}}
+            {{#link-to 'login' class='right item'}}<i class="sign in icon"></i>{{/link-to}}
         {{/if}}
-    </nav>
-</header>
-
-
+    </div>
+</div>

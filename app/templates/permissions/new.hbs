@@ -1,18 +1,12 @@
-<div class="skinny-wrapper wrapper-padding">
-    <label>
-        name:
-    </label>
-    <br>
-    {{input type="text" value=model.name class="form-control" placeholder="Permission name"}}
-    <br>
-    <label>
-        code:
-    </label>
-    <br>
-    {{input type="text" value=model.code class="form-control" placeholder="enter code: permissionName"}}
-    <br>
-    <input type="submit" {{action 'save' model}}  placeholder='save'>
-</div>
-
-
+<form class="ui form">
+    <div class="field">
+        <label>Permission Name</label>
+        {{input type="text" value=model.name  placeholder="name: Can Create Blogs"}}
+    </div>
+    <div class="field">
+        <label>Permission Name</label>
+        {{input type="text" value=model.code placeholder="code: canCreateBlogs"}}
+    </div>
+    <input type="submit" {{action 'save' model}}  placeholder='save' class="ui button">
+</form>
 

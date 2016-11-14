@@ -1,10 +1,9 @@
-<div class="skinny-wrapper">
-    <h3>Create Role:</h3>
-    <div>
-        <label>name</label>
-        {{input type="text" value=role.name class="form-control" placeholder="role name"}}
+<form class="ui form">
+    <div class="field">
+        <label>Role Name</label>
+        {{input type="text" value=role.name placeholder="role name"}}
     </div>
-    <div>
+    <div class="field">
         {{#power-select
                 options=permissions
                 selected=permission
@@ -15,8 +14,9 @@
             {{permission.name}}
         {{/power-select}}
     </div>
-    <br>
-    <div>
-        <input type="submit" {{action 'buttonClicked' role}} placeholder={{buttonLabel}}>
-    </div>
-</div>
+    <input type="submit" {{action 'buttonClicked' role}} class="ui button" placeholder={{buttonLabel}}>
+</form>
+
+
+
+

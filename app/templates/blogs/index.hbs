@@ -1,2 +1,28 @@
-{{link-to 'new Blog' 'blogs.new'}}
-{{table-component items=filteredBlogs}}
+{{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui green basic button"}}
+
+<div class="ui three column grid">
+        {{#each model as |blog|}}
+        <div class="column">
+            <div class="ui card">
+                <div class="content">
+                    <div class="header">{{link-to blog.name 'blogs.show' blog.id}}</div>
+                </div>
+                <div class="content blog-content">
+                    <h4 class="ui sub header">Description:</h4>
+                    <div class="ui small feed">
+                        <div class="event">
+                            <div class="content">
+                                <div class="summary">
+                                    {{blog.description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="extra content">
+                    {{link-to 'Join' 'blogs.show' blog.id class="ui grey basic button"}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+</div>

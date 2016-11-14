@@ -1,24 +1,22 @@
-<div class="skinny-wrapper">
-    <label>Name</label>
-    <div>
+<form class="ui form">
+    <div class="field">
+        <label>Name</label>
         {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
     </div>
-
-        {{#power-select
-                selected=type
-                placeholder="Please, select category"
-                options=blogTypeList
-                onchange=(action "chooseBlogType")
-        as |type|
-        }}
-            {{type.name}}
-        {{/power-select}}
-
-    <label>Description</label>
-    <div>
+    {{#power-select
+            selected=type
+            placeholder="Please, select category"
+            options=blogTypeList
+            onchange=(action "chooseBlogType")
+    as |type|
+    }}
+        {{type.name}}
+    {{/power-select}}
+    <div class="field">
+        <label>Description</label>
         {{textarea value=blog.description cols="80" rows="6" class="form-control" placeholder="..."}}
     </div>
     <div>
-        <input type="submit" {{action 'buttonClicked' blog}} placeholder={{buttonLabel}}>
+        <input type="submit" class="ui button" {{action 'buttonClicked' blog}} placeholder={{buttonLabel}}>
     </div>
-</div>
+</form>
