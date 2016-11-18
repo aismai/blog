@@ -21,3 +21,17 @@
   height: 250px;
   overflow:hidden;
 }
+
+#delete-multiple {
+  float: left;
+  margin-bottom: 30px;
+}
+
+.canDeleteAllBlogs {
+  .ui.card {
+    cursor: pointer;
+  }
+  .blog-clicked {
+    box-shadow: 0 1px 15px 0 #e00013, 0 0 0 1px #a72727;
+  }
+}

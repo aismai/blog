@@ -1,13 +1,19 @@
 {{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui green basic button"}}
+{{#has-permission permissionCode='canDeleteAllBlogs'}}
+<button {{action 'deleteMultiple' blog}} id="delete-multiple" class="ui negative basic button ">
+    delete Blog
+</button>
+{{/has-permission}}
 
-<div class="ui three column grid">
-        {{#each model as |blog|}}
+<div class="ui three column grid {{hasPermission permissionCode='canDeleteAllBlogs' permissions=authManager.currentPermissions}}">
+    {{#each model as |blog|}}
         <div class="column">
-            <div class="ui card">
+            <div class="ui card {{if blog.isClicked 'blog-clicked'}}" {{action 'selectBlog' blog}}>
                 <div class="content">
                     <div class="header">{{link-to blog.name 'blogs.show' blog.id}}</div>
                 </div>
                 <div class="content blog-content">
+                    <div class="meta">by: {{blog.user.email}}</div>
                     <h4 class="ui sub header">Description:</h4>
                     <div class="ui small feed">
                         <div class="event">
@@ -20,9 +26,17 @@
                     </div>
                 </div>
                 <div class="extra content">
-                    {{link-to 'Join' 'blogs.show' blog.id class="ui grey basic button"}}
+                    {{link-to 'Join' 'blogs.show' blog.id class="mini ui grey basic button"}}
+                    {{#has-permission  permissionCode='canEditAllBlogs'}}
+                        {{link-to 'Edit' 'blogs.edit' blog.id class="mini ui brown basic button"}}
+                    {{/has-permission}}
+                    {{#has-permission  permissionCode='canDeleteAllBlogs'}}
+                        <button {{action 'deleteBlog' blog }} class="mini ui negative basic button">
+                            Delete
+                        </button>
+                    {{/has-permission}}
                 </div>
             </div>
         </div>
-        {{/each}}
+    {{/each}}
 </div>
