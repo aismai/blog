@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   queryParams: ['user'],
   user: null,
 
-  filteredBlogs: Ember.computed('user', 'model', function() {
+  filteredBlogs: Ember.computed('user', 'model', function () {
     let user = this.get('user');
     let blogs = this.get('model');
     if (user) {
