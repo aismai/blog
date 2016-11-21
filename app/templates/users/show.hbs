@@ -13,7 +13,7 @@
     <tbody>
         <tr>
             <td>{{model.email}}</td>
-            <td>{{link-to model.blogs.length 'blogs'  (query-params user= model.id)}}</td>
+            <td>{{link-to model.blogs.length 'blogs' (query-params sortBy=model.id)}}</td>
             <td>{{model.posts.length}}</td>
             <td>{{model.comments.length}}</td>
             <td>{{model.registrationDate}}</td>
@@ -24,5 +24,3 @@
         </tr>
     </tbody>
 </table>
-
-<hr>

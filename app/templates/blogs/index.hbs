@@ -6,7 +6,7 @@
 {{/has-permission}}
 
 <div class="ui three column grid {{if (hasPermission 'canDeleteAllBlogs') 'can-delete-all-blogs'}}">
-    {{#each model as |blog|}}
+    {{#each filteredBlogs as |blog|}}
         <div class="column">
             <div class="ui card {{if blog.isClicked 'blog-clicked'}}" {{action 'selectBlog' blog}}>
                 <div class="content">

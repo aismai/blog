@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['user'],
+  queryParams: ['sortBy'],
   user: null,
 
-  filteredBlogs: Ember.computed('user', 'model', function () {
-    let user = this.get('user');
+  filteredBlogs: Ember.computed('sortBy', 'model', function () {
+    let user = this.get('sortBy');
     let blogs = this.get('model');
     if (user) {
       return blogs.filterBy('user.id', user);

@@ -1,11 +1,7 @@
 import AuthenticatedRoute from '../authenticated-route';
-import Ember from 'ember';
 
 export default AuthenticatedRoute.extend({
   blogsArray: [],
-  canDelete: Ember.computed('authManager.currentPermissions', function(){
-    console.log(this.get('authManager.currentPermissions'));
-  }),
 
   model(){
     return this.store.findAll('blog');
