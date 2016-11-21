@@ -4,15 +4,15 @@
         {{input type="text" value=role.name placeholder="role name"}}
     </div>
     <div class="field">
-        {{#power-select
+        {{#power-select-multiple
                 options=permissions
                 selected=permission
-                placeholder="Please, select permission"
-                onchange=(action 'addPermission')
+                placeholder="Please, select permissions"
+                onchange=(action 'addPermission' (mut ingnore permissions))
         as |permission|
         }}
             {{permission.name}}
-        {{/power-select}}
+        {{/power-select-multiple}}
     </div>
     <input type="submit" {{action 'buttonClicked' role}} class="ui button" placeholder={{buttonLabel}}>
 </form>

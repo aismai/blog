@@ -14,9 +14,11 @@ export default Ember.Component.extend({
       });
     this.set('blog', blog);
   },
-  willDestroyElement() {
-    // this.get('blog').unloadRecord();
-  },
+
+  // willDestroyElement() {
+  //   this.get('blog').unloadRecord();
+  // }
+  //
   actions: {
     chooseBlogType(type){
       const selectedType = this.set('type', type);
@@ -24,6 +26,6 @@ export default Ember.Component.extend({
     },
     buttonClicked(blogParams) {
       this.sendAction('action', blogParams);
-    }
+    },
   }
 });

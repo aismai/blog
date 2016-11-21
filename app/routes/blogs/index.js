@@ -14,6 +14,7 @@ export default AuthenticatedRoute.extend({
   init() {
     this._super(...arguments);
   },
+
   resetController(controller, isExiting) {
     if (isExiting) {
       controller.set('user', null);

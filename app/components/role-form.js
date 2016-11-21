@@ -14,8 +14,9 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    addPermission(permission){
-      this.get('role').get('permissions').pushObject(this.set('permission', permission));
+    addPermission(ignore, permissions){
+      const selected = this.set('permission', permissions);
+      this.set('role.permissions', selected);
     },
     buttonClicked(role) {
       this.sendAction('action', role);

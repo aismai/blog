@@ -6,12 +6,11 @@ export default Ember.Route.extend({
 
     save(role) {
       role.save().then(() => {
-        // const user = this.get('authManager.currentUser');
         this.transitionTo('roles');
       });
     }
   }
-  //
+
   // willTransition() {
   //   this.controller.get('model').unloadRecord();
   // }
