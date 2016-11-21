@@ -34,9 +34,11 @@ Router.map(function() {
     this.route('new', {path: '/register'});
     this.route('show', {path: ':user_id'});
   });
+
   this.route('blog-type', function() {
     this.route('new');
   });
+
   this.route('login');
 
   this.route('roles', function() {

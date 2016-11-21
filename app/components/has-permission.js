@@ -4,9 +4,11 @@ export default Ember.Component.extend({
   tagName: '',
   permission: undefined,
   hasPermission: Ember.computed('authManager.currentPermissions', 'permission', function () {
-    return this.get('authManager.currentPermissions').filter((permission) => {
-      return permission.get('code') === this.get('permission');
-    });
+    if(this.get('authManager.currentPermissions')) {
+      return this.get('authManager.currentPermissions').filter((permission) => {
+        return permission.get('code') === this.get('permission');
+      });
+    }
   }),
 
   init() {
