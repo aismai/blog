@@ -1,0 +1,19 @@
+{{link-to 'add type' 'blog-type.new' class='ui green basic button'}}
+
+
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th>Blogs</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each model as |category| }}
+        <tr>
+            <td>{{category.name}}</td>
+            <td>5</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

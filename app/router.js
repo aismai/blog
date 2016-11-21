@@ -40,7 +40,6 @@ Router.map(function() {
   this.route('login');
 
   this.route('roles', function() {
-
     this.route('new');
   });
 

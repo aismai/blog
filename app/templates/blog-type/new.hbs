@@ -1,9 +1,7 @@
-<div class="skinny-wrapper">
-    <label>Name</label>
-    <div>
+<form class="ui form">
+    <div class="field">
+        <label>Category:</label>
         {{input type="text" value=model.name  placeholder="The name of the category"}}
     </div>
-    <div>
-        <input type="submit" {{action 'save' model}} placeholder='Save'>
-    </div>
-</div>
+    <input type="submit" class="ui button" {{action 'save' model}} placeholder='Save'>
+</form>
