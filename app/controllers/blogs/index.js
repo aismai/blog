@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   queryParams: ['sortBy'],
-  user: null,
+  sortBy: null,
 
   filteredBlogs: Ember.computed('sortBy', 'model', function () {
     let user = this.get('sortBy');
