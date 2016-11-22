@@ -10,6 +10,7 @@ export default Ember.Service.extend({
   }),
 
 
+  //TODO: rename this method
   lastLogin(user) {
     user.set('login', new Date());
     user.save();
@@ -30,8 +31,12 @@ export default Ember.Service.extend({
   initializeUserPermissions(user) {
     const ds = this;
     return new Promise (function (resolve) {
+
+      //TODO: what will be if it is the new user and role with no permissions?
         user.get('role.permissions').then((permissions) => {
           ds.set('currentPermissions', permissions);
+
+          //TODO: cipher - what is it?
           ds.set('cipher', permissions);
           resolve();
         });

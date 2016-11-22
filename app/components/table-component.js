@@ -18,6 +18,8 @@ export default Ember.Component.extend({
 
   actions: {
     hideField(ignore, fieldsArray) {
+
+      //TODO: same as Marat
       const selected = this.set('field', fieldsArray);
       this.get('fieldNames').forEach((field) => {
         Ember.set(field, 'status', true);

@@ -1,8 +1,12 @@
 <div class="ui fixed menu">
     <div class="ui container">
         {{#link-to 'blogs' class="header item"}}Gecko{{/link-to}}
+
+      //TODO: move this to isAuthenticated block
         {{#link-to 'blog-type' class='item'}}Categories{{/link-to}}
         {{#link-to 'blogs' (query-params sortBy=null) class='item'}}Blogs{{/link-to}}
+
+
         {{#if authManager.isAuthenticated}}
             {{link-to 'Profile' 'users.show' authManager.currentUser  class='item'}}
             {{!#if authManager.isAdmin}}
