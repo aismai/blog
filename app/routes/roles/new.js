@@ -1,9 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  // TODO: close route != admin
-  actions: {
 
+  actions: {
     save(role) {
       role.save().then(() => {
         this.transitionTo('roles');
@@ -11,7 +10,4 @@ export default Ember.Route.extend({
     }
   }
 
-  // willTransition() {
-  //   this.controller.get('model').unloadRecord();
-  // }
 });

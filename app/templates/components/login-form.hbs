@@ -20,13 +20,10 @@
                         {{input type="password" value=password placeholder="Password"}}
                     </div>
                 </div>
-                <input type="submit" {{action 'buttonClicked'}}  class="ui fluid large teal submit button" placeholder={{buttonLabel}}>
+                <input type="submit" {{action 'login'}}  class="ui fluid large teal submit button" placeholder={{buttonLabel}}>
             </div>
-
             <div class="ui error message"></div>
-
         </form>
-
         <div class="ui message">
             New to us? {{link-to "Sign Up" "users.new"}}
         </div>

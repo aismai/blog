@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../authenticated-route';
 
 //TODO: authenticated route?
-export default Ember.Route.extend({
+//done
+export default AuthenticatedRoute.extend({
   model() {
     return this.store.findAll('blog-type');
   }

@@ -13,6 +13,10 @@ export default Ember.Component.extend({
     this.set('role', newRole);
   },
 
+  willDestroyElement() {
+    this.get('role').rollbackAttributes();
+  },
+
   actions: {
     addPermission(ignore, permissions){
       const selected = this.set('permission', permissions);
