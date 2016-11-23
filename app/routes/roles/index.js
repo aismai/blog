@@ -7,10 +7,17 @@ export default Ember.Route.extend({
 
   actions: {
     deleteRole(role) {
-      let confirmation = confirm('Are you sure?');
-      if (confirmation) {
-          role.destroyRecord();
-      }
+      const usersPromise = this.store.findAll('user');
+      usersPromise.then((users) => {
+        users.forEach((user) => {
+          if (user.get('role.id').includes(role.get('id'))) {
+            user.set('role', null);
+            user.save();
+          }
+        });
+        role.destroyRecord();
+      });
+
     }
   }
 });

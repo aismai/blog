@@ -22,7 +22,7 @@ export default DS.Model.extend({
     return moment(this.get('registration')).format("DD.MM.YYYY");
   }),
 
-  setLastLoginDate: Ember.computed('login', function () {
+  lastLogin: Ember.computed('login', function () {
     return moment(this.get('login')).format("DD.MM.YYYY, HH:mm:ss");
   })
 });

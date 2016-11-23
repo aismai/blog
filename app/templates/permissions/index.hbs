@@ -7,13 +7,13 @@
     </tr>
     </thead>
     <tbody>
-    {{# each model.permissions as |permission| }}
+    {{# each model as |permission| }}
         <tr>
             <td>{{permission.name}}</td>
             <td>{{permission.code}}</td>
             <td>
-                {{link-to 'edit' 'permissions.edit' permission.id class='ui button'}}
-                <button {{action 'deletePermission' permission}} class="ui disabled button">
+                {{link-to 'edit' 'permissions.edit' permission.id class='mini ui secondary basic button'}}
+                <button {{action 'deletePermission' permission}} class="mini ui negative basic button">
                     delete
                 </button>
             </td>

@@ -3,10 +3,10 @@
     <p>
         code: canEditAllBlogs, canDeleteAllBlogs
     </p>
-    {{link-to 'add permissions' 'permissions.new' class='ui button'}}
+    {{link-to 'add permissions' 'permissions.new' class='mini ui secondary basic button'}}{{link-to 'list of permissions' 'permissions' class="mini ui secondary basic button"}}
 </div>
 <br>
-{{link-to 'new role' 'roles.new' class='ui button'}}
+{{link-to 'new role' 'roles.new' class='mini ui secondary basic button'}}
 <table class="ui celled table">
     <thead>
     <tr>
@@ -18,14 +18,15 @@
     <tbody>
     {{#each model as |role|}}
         <tr>
-            <td>{{link-to role.name 'permissions' role.id}}</td>
+            <td>{{link-to role.name 'roles.show' role.id}}</td>
             <td colspan="3">
                 {{#each role.permissions as |permission| }}
                     {{permission.code}}
                 {{/each}}
             </td>
             <td>
-                <button {{action 'deleteRole' role}}>
+                {{link-to 'edit' 'roles.edit' role.id class="mini ui black basic button"}}
+                <button {{action 'deleteRole' role}} class="mini ui secondary basic button">
                     delete
                 </button>
             </td>

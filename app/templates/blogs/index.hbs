@@ -1,4 +1,4 @@
-{{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui green basic button"}}
+{{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui secondary basic button"}}
 {{#has-permission permissionCode='canDeleteAllBlogs'}}
 <button {{action 'deleteMultiple' blog}} id="delete-multiple" class="ui negative basic button ">
     delete Blog
@@ -28,7 +28,7 @@
                 <div class="extra content">
                     {{link-to 'Join' 'blogs.show' blog.id class="mini ui grey basic button"}}
                     {{#has-permission  permissionCode='canEditAllBlogs'}}
-                        {{link-to 'Edit' 'blogs.edit' blog.id class="mini ui brown basic button"}}
+                        {{link-to 'Edit' 'blogs.edit' blog.id class="mini ui secondary basic button"}}
                     {{/has-permission}}
                     {{#has-permission  permissionCode='canDeleteAllBlogs'}}
                         <button {{action 'deleteBlog' blog }} class="mini ui negative basic button">

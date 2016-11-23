@@ -1,20 +1,20 @@
+<div class="field">
+{{#power-select-multiple
+        options=permissions
+        selected=permission
+        placeholder="Please, select permissions"
+        onchange=(action 'addPermission' (mut ingnore permissions))
+as |permission|
+}}
+    {{permission.name}}
+{{/power-select-multiple}}
+</div>
 <form class="ui form">
     <div class="field">
         <label>Role Name</label>
         {{input type="text" value=role.name placeholder="role name"}}
     </div>
-    <div class="field">
-        {{#power-select-multiple
-                options=permissions
-                selected=permission
-                placeholder="Please, select permissions"
-                onchange=(action 'addPermission' (mut ingnore permissions))
-        as |permission|
-        }}
-            {{permission.name}}
-        {{/power-select-multiple}}
-    </div>
-    <input type="submit" {{action 'buttonClicked' role}} class="ui button" placeholder={{buttonLabel}}>
+    <input type="submit" {{action 'buttonClicked' role}} class="ui black basic button" placeholder={{buttonLabel}}>
 </form>
 
 

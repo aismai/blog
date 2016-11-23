@@ -9,8 +9,8 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    const newRole = this.get('store').createRecord('role');
-    this.set('role', newRole);
+    const role = this.get('item') || this.get('store').createRecord('role');
+    this.set('role', role);
   },
 
   willDestroyElement() {

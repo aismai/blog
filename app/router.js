@@ -45,14 +45,13 @@ Router.map(function() {
     this.route('new');
     this.route('edit', { path: '/:role_id/edit' });
     this.route('show', { path: '/:role_id' }, function () {
-      this.route('permissions', { resetNamespace: true } ,function() {
-        this.route('new');
-        this.route('edit', { path: '/:permission_id/edit' });
-      });
     });
 
   });
-
+  this.route('permissions', function() {
+    this.route('new');
+    this.route('edit', { path: '/:permission_id/edit' });
+  });
 });
 
 export default Router;

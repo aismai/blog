@@ -12,7 +12,7 @@ as |field|
     <thead>
     <tr>
         {{#each fieldNames as |field|}}
-            {{#if field.status}}
+            {{#if field.displayField}}
                 <th>{{field.name}}</th>
             {{/if}}
         {{/each}}
@@ -22,7 +22,7 @@ as |field|
     {{#each items as |item|}}
         <tr>
             {{#each fieldNames as |field|}}
-                {{#if field.status}}
+                {{#if field.displayField}}
                     <td>{{get item field.name}}</td>
                 {{/if}}
             {{/each}}
