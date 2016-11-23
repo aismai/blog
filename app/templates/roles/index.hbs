@@ -1,5 +1,12 @@
-{{link-to 'new role' 'roles.new'}}
-
+<div>
+    <h5 style="color: red">add permissions first</h5>
+    <p>
+        code: canEditAllBlogs, canDeleteAllBlogs
+    </p>
+    {{link-to 'add permissions' 'permissions.new' class='ui button'}}
+</div>
+<br>
+{{link-to 'new role' 'roles.new' class='ui button'}}
 <table class="ui celled table">
     <thead>
     <tr>
@@ -11,7 +18,7 @@
     <tbody>
     {{#each model as |role|}}
         <tr>
-            <td>{{role.name}}</td>
+            <td>{{link-to role.name 'permissions' role.id}}</td>
             <td colspan="3">
                 {{#each role.permissions as |permission| }}
                     {{permission.code}}

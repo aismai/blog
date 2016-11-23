@@ -1,13 +1,10 @@
 <div class="ui fixed menu">
     <div class="ui container">
         {{#link-to 'blogs' class="header item"}}Gecko{{/link-to}}
-
-      //TODO: move this to isAuthenticated block
-        {{#link-to 'blog-type' class='item'}}Categories{{/link-to}}
-        {{#link-to 'blogs' (query-params sortBy=null) class='item'}}Blogs{{/link-to}}
-
-
+      <!--TODO: move this to isAuthenticated block-->
         {{#if authManager.isAuthenticated}}
+            {{#link-to 'blog-type' class='item'}}Categories{{/link-to}}
+            {{#link-to 'blogs' (query-params sortBy=null) class='item'}}Blogs{{/link-to}}
             {{link-to 'Profile' 'users.show' authManager.currentUser  class='item'}}
             {{!#if authManager.isAdmin}}
                 <div class="ui simple dropdown item">
@@ -15,9 +12,7 @@
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         {{#link-to 'users' class='item'}}<i class="users icon"></i>Users{{/link-to}}
-                        {{#link-to 'roles' class='item'}}<i class="empire icon"></i>Role{{/link-to}}
-                        {{#link-to 'permissions.new' class='item'}}
-                            <i class="unlock alternate icon"></i>Permissions{{/link-to}}
+                        {{#link-to 'roles' class='item'}}<i class="empire icon"></i>Roles{{/link-to}}
                     </div>
                 </div>
             {{!/if}}

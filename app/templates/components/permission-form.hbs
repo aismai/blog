@@ -1,0 +1,12 @@
+
+<form class="ui form">
+    <div class="field">
+        <label>Permission Name</label>
+        {{input type="text" value=item.name  placeholder="name: Can Create Blogs"}}
+    </div>
+    <div class="field">
+        <label>Permission Name</label>
+        {{input type="text" value=item.code placeholder="code: canCreateBlogs"}}
+    </div>
+    <input type="submit" {{action 'save' item}}  placeholder='save' class="ui button">
+</form>
