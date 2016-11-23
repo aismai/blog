@@ -18,8 +18,6 @@ export default Ember.Component.extend({
 
   actions: {
     hideField(ignore, fieldsArray) {
-      //TODO: same as Marat, use contains()
-      // used include
       const selected = this.set('field', fieldsArray);
       this.get('fieldNames').forEach((field) => {
         Ember.set(field, 'displayField', true);

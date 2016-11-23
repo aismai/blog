@@ -9,8 +9,6 @@ export default Ember.Service.extend({
     return !!this.get('currentUser.id');
   }),
 
-  //TODO: rename this method
-  //renamed lastLogin to setLastLoginDate
   setLastLoginDate(user) {
     user.set('login', new Date());
     user.save();
@@ -30,8 +28,6 @@ export default Ember.Service.extend({
   initializeUserPermissions(user) {
     const ds = this;
     return new Promise(function (resolve) {
-      //TODO: what will be if it is the new user and role with no permissions?
-      //can login, can create blog
       if (user.get('role.permissions')) {
         user.get('role.permissions').then((permissions) => {
           ds.set('currentPermissions', permissions);
