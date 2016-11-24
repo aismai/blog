@@ -1,9 +1,12 @@
 {{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui secondary basic button"}}
 {{#has-permission permissionCode='canDeleteAllBlogs'}}
-<button {{action 'deleteMultiple' blog}} id="delete-multiple" class="ui negative basic button ">
-    delete Blog
-</button>
+    <button {{action 'deleteMultiple' blog}} id="delete-multiple" class="ui negative basic button ">
+        delete Blog
+    </button>
 {{/has-permission}}
+
+
+
 
 <div class="ui three column grid {{if (hasPermission 'canDeleteAllBlogs') 'can-delete-all-blogs'}}">
     {{#each filteredBlogs as |blog|}}
@@ -27,18 +30,22 @@
                 </div>
                 <div class="extra content">
                     {{link-to 'Join' 'blogs.show' blog.id class="mini ui grey basic button"}}
-                    {{#has-permission  permissionCode='canEditAllBlogs'}}
-                        {{link-to 'Edit' 'blogs.edit' blog.id class="mini ui secondary basic button"}}
-                    {{/has-permission}}
-                    {{#has-permission  permissionCode='canDeleteAllBlogs'}}
-                        <button {{action 'deleteBlog' blog }} class="mini ui negative basic button">
-                            Delete
-                        </button>
-                    {{/has-permission}}
-                    {{#if blog.isAuthor}}
-                        <button {{action 'deleteBlog' blog }} class="mini ui negative basic button">
-                            Delete
-                        </button>
+                    {{#if (hasPermission 'canDeleteAllBlogs' 'canEditAllBLogs')}}
+                        {{#has-permission  permissionCode='canEditAllBlogs'}}
+                            {{link-to 'Edit' 'blogs.edit' blog.id class="mini ui secondary basic button"}}
+                        {{/has-permission}}
+                        {{#has-permission  permissionCode='canDeleteAllBlogs'}}
+                            <button {{action 'deleteBlog' blog }} class="mini ui negative basic button">
+                                Delete
+                            </button>
+                        {{/has-permission}}
+                    {{else}}
+                        {{#if (userIsAuthor blog.id)}}
+                            {{link-to 'Edit' 'blogs.edit' blog.id class="mini ui secondary basic button"}}
+                            <button {{action 'deleteBlog' blog }} class="mini ui negative basic button">
+                                Delete
+                            </button>
+                        {{/if}}
                     {{/if}}
                 </div>
             </div>

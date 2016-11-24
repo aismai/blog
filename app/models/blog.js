@@ -11,7 +11,7 @@ export default DS.Model.extend({
   blogType: DS.belongsTo('blog-type'),
 
   isValid: Ember.computed.notEmpty('name'),
-  isAuthor: Ember.computed('user.id', function () {
-    return (this.get('user.id') === this.get('authManager.currentUser.id'));
-  })
+  // isAuthor: Ember.computed('user.id', function () {
+  //   return (this.get('user.id') === this.get('authManager.currentUser.id'));
+  // })
 });
