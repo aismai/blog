@@ -37,10 +37,9 @@ export default imageCropper.extend({
       };
     },
 
-    getCroppedAvatar() {
+    crop() {
       const container = this.$(this.get('cropperContainer'));
       let croppedImage = container.cropper('getCroppedCanvas');
-      console.log(croppedImage.toDataURL());
       this.set('blog.cover', croppedImage.toDataURL());
     }
   }

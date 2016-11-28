@@ -4,7 +4,7 @@
         Add Cover</label>
     <input type="file" id="file" onchange={{action "loadImage"}}>
     {{!input type='file' id="file" value=uploadedFile}}
-    <button {{action 'getCroppedAvatar'}} class="ui secondary button">crop</button>
+    <button {{action 'crop'}} class="ui secondary button">crop</button>
 </div>
 <br>
 <hr>
@@ -12,7 +12,7 @@
     <div class="cropper-preview">
     </div>
     <div class="cropper-container">
-        <img id="image" src="/assets/images/sanctum_sanctorum.jpg">
+        <img id="image" src="">
     </div>
 </div>
 <hr>

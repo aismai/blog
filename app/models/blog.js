@@ -5,7 +5,9 @@ import Ember from 'ember';
 export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
-  cover: DS.attr('string'),
+  cover: DS.attr('string', {
+    defaultValue() { return '/assets/images/sanctum_sanctorum.jpg'; }
+  }),
 
   posts: DS.hasMany('post'),
   user: DS.belongsTo('user'),

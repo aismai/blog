@@ -18,7 +18,7 @@
 }
 
 .blog-content {
-  height: 250px;
+  height: 100px;
   overflow:hidden;
 }
 
@@ -37,6 +37,7 @@
 }
 
 .cropper-container {
+  min-height: 300px;
   max-width: 500px;
   img {
     max-width: 100%; /* This rule is very important, please do not ignore this! */
@@ -55,7 +56,7 @@
   max-height: none;
   position: absolute;
   left: 650px;
-  border: 4px solid #a4a4a5;
+  border: 1px solid #a4a4a5;
 }
 
 #file {
