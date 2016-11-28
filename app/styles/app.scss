@@ -35,3 +35,29 @@
     box-shadow: 0 1px 15px 0 #e00013, 0 0 0 1px #a72727;
   }
 }
+
+.cropper-container {
+  max-width: 500px;
+  img {
+    max-width: 100%; /* This rule is very important, please do not ignore this! */
+  }
+}
+
+.cropper-preview {
+  overflow: hidden;
+  transform: none;
+  display: block;
+  height: 200px;
+  width: 200px;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+  position: absolute;
+  left: 650px;
+  border: 4px solid #a4a4a5;
+}
+
+#file {
+  display: none;
+}
