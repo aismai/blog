@@ -1,23 +1,23 @@
 <table class="ui celled table">
-    <thead>
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>code</th>
+    <th colspan="2">actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{# each model as |permission| }}
     <tr>
-        <th>name</th>
-        <th>code</th>
-        <th colspan="2">actions</th>
+      <td>{{permission.name}}</td>
+      <td>{{permission.code}}</td>
+      <td>
+        {{link-to 'edit' 'permissions.edit' permission.id class='mini ui secondary basic button'}}
+        <button {{action 'deletePermission' permission}} class="mini ui negative basic button">
+          delete
+        </button>
+      </td>
     </tr>
-    </thead>
-    <tbody>
-    {{# each model as |permission| }}
-        <tr>
-            <td>{{permission.name}}</td>
-            <td>{{permission.code}}</td>
-            <td>
-                {{link-to 'edit' 'permissions.edit' permission.id class='mini ui secondary basic button'}}
-                <button {{action 'deletePermission' permission}} class="mini ui negative basic button">
-                    delete
-                </button>
-            </td>
-        </tr>
-    {{/each}}
-    </tbody>
+  {{/each}}
+  </tbody>
 </table>

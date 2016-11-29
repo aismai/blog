@@ -1,26 +1,26 @@
 <table class="ui celled table">
-    <thead>
-    <tr>
-        <th>email</th>
-        <th>blogs</th>
-        <th>posts</th>
-        <th>comments</th>
-        <th>registration</th>
-        <th>login</th>
-        <th colspan="3">permissions</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{model.email}}</td>
-            <td>{{link-to model.blogs.length 'blogs' (query-params sortBy=model.id)}}</td>
-            <td>{{model.posts.length}}</td>
-            <td>{{model.comments.length}}</td>
-            <td>{{model.registrationDate}}</td>
-            <td>{{model.lastLogin}}</td>
-            {{#each model.role.permissions as |permission|}}
-                <td>{{permission.code}}</td>
-            {{/each}}
-        </tr>
-    </tbody>
+  <thead>
+  <tr>
+    <th>email</th>
+    <th>blogs</th>
+    <th>posts</th>
+    <th>comments</th>
+    <th>registration</th>
+    <th>login</th>
+    <th colspan="3">permissions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{model.email}}</td>
+    <td>{{link-to model.blogs.length 'blogs' (query-params sortBy=model.id)}}</td>
+    <td>{{model.posts.length}}</td>
+    <td>{{model.comments.length}}</td>
+    <td>{{model.registrationDate}}</td>
+    <td>{{model.lastLogin}}</td>
+    {{#each model.role.permissions as |permission|}}
+      <td>{{permission.code}}</td>
+    {{/each}}
+  </tr>
+  </tbody>
 </table>

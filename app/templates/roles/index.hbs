@@ -1,36 +1,39 @@
 <div>
-    <h5 style="color: red">add permissions first</h5>
-    <p>
-        code: canEditAllBlogs, canDeleteAllBlogs
-    </p>
-    {{link-to 'add permissions' 'permissions.new' class='mini ui secondary basic button'}}{{link-to 'list of permissions' 'permissions' class="mini ui secondary basic button"}}
+  <h5 style="color: red">add permissions first</h5>
+  <p>
+    code: canEditAllBlogs, canDeleteAllBlogs
+  </p>
+  {{link-to 'add permissions' 'permissions.new' class='mini ui secondary basic button'}}
+  {{link-to 'list of permissions'
+            'permissions'
+            class="mini ui secondary basic button"}}
 </div>
 <br>
 {{link-to 'new role' 'roles.new' class='mini ui secondary basic button'}}
 <table class="ui celled table">
-    <thead>
+  <thead>
+  <tr>
+    <th>name</th>
+    <th colspan="3">permissions</th>
+    <th>actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each model as |role|}}
     <tr>
-        <th>name</th>
-        <th colspan="3">permissions</th>
-        <th>actions</th>
+      <td>{{link-to role.name 'roles.show' role.id}}</td>
+      <td colspan="3">
+        {{#each role.permissions as |permission| }}
+          {{permission.code}}
+        {{/each}}
+      </td>
+      <td>
+        {{link-to 'edit' 'roles.edit' role.id class="mini ui black basic button"}}
+        <button {{action 'deleteRole' role}} class="mini ui secondary basic button">
+          delete
+        </button>
+      </td>
     </tr>
-    </thead>
-    <tbody>
-    {{#each model as |role|}}
-        <tr>
-            <td>{{link-to role.name 'roles.show' role.id}}</td>
-            <td colspan="3">
-                {{#each role.permissions as |permission| }}
-                    {{permission.code}}
-                {{/each}}
-            </td>
-            <td>
-                {{link-to 'edit' 'roles.edit' role.id class="mini ui black basic button"}}
-                <button {{action 'deleteRole' role}} class="mini ui secondary basic button">
-                    delete
-                </button>
-            </td>
-        </tr>
-    {{/each}}
-    </tbody>
+  {{/each}}
+  </tbody>
 </table>

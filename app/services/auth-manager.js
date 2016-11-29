@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  store: Ember.inject.service(),
-  currentUser: Ember.Object.create(),
+  store:              Ember.inject.service(),
+  currentUser:        Ember.Object.create(),
   currentPermissions: [],
 
   isAuthenticated: Ember.computed('currentUser.id', function () {
@@ -15,10 +15,11 @@ export default Ember.Service.extend({
   },
 
   findUser(email, pass){
-    return this.get('store').query('user', {email: email, password: pass})
-      .then(function (users) {
-        return users.get("firstObject");
-      });
+    return this.get('store')
+               .query('user', {email: email, password: pass})
+               .then(function (users) {
+                 return users.get("firstObject");
+               });
   },
 
   setCurrentUser(user){
@@ -30,11 +31,13 @@ export default Ember.Service.extend({
     return new Promise(function (resolve) {
 
       //TODO: check permissions.length
-      if (user.get('role.permissions')) {
-        user.get('role.permissions').then((permissions) => {
-          ds.set('currentPermissions', permissions);
-          resolve();
-        });
+      //!
+      if (user.get('role.permissions.length')) {
+        user.get('role.permissions')
+            .then((permissions) => {
+              ds.set('currentPermissions', permissions);
+              resolve();
+            });
       }
       resolve();
     });

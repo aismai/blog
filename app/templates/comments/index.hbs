@@ -1,18 +1,18 @@
 {{link-to 'leave comment:' 'comments.new' model.id class="button"}}
 <hr>
 <div class="skinny-wrapper">
-{{#each model.comments as |comment|}}
+  {{#each model.comments as |comment|}}
     <div class="comment-body">
-            <p class="date">{{comment.user.email}}</p>
-            <p>{{comment.body}}</p>
-            <p class="date">
-                {{#if comment.isAuthor}}
-                    {{link-to 'edit' 'comments.edit' comment}}
-                    <button {{action 'delete' comment}}>
-                        delete
-                    </button>
-                {{/if}}
-            </p>
+      <p class="date">{{comment.user.email}}</p>
+      <p>{{comment.body}}</p>
+      <p class="date">
+        {{#if comment.isAuthor}}
+          {{link-to 'edit' 'comments.edit' comment}}
+          <button {{action 'delete' comment}}>
+            delete
+          </button>
+        {{/if}}
+      </p>
     </div>
-{{/each}}
+  {{/each}}
 </div>

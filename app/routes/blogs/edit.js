@@ -4,9 +4,10 @@ import Ember from 'ember';
 export default AuthenticatedRoute.extend({
 
   hasPermission: Ember.computed('authManager.currentPermissions', function () {
-    return !!this.get('authManager.currentPermissions').find((permission) => {
-      return permission.get('code') === 'canEditAllBlogs';
-    });
+    return !!this.get('authManager.currentPermissions')
+                 .find((permission) => {
+                   return permission.get('code') === 'canEditAllBlogs';
+                 });
   }),
 
   model(params){
@@ -23,9 +24,10 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(blog) {
-      blog.save().then(() => {
-        this.transitionTo('blogs');
-      });
+      blog.save()
+          .then(() => {
+            this.transitionTo('blogs');
+          });
     },
 
     willTransition(transition) {

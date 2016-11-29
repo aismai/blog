@@ -7,9 +7,10 @@ export default Ember.Route.extend({
 
   actions: {
     save(permission) {
-      permission.save().then(() => {
-        this.transitionTo('permissions');
-      });
+      permission.save()
+                .then(() => {
+                  this.transitionTo('permissions');
+                });
     }
   }
 });

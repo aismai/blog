@@ -7,10 +7,11 @@ export default Ember.Route.extend({
 
   actions: {
     save(permission) {
-      permission.save().then((savedPermission) => {
-        console.log(savedPermission);
-        this.transitionTo('roles');
-      });
+      permission.save()
+                .then((savedPermission) => {
+                  console.log(savedPermission);
+                  this.transitionTo('roles');
+                });
     }
   }
 });

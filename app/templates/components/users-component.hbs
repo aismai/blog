@@ -1,35 +1,35 @@
 <table class="ui celled table">
-    <thead>
+  <thead>
+  <tr>
+    <th>email</th>
+    <th>blogs</th>
+    <th>registration</th>
+    <th>last login</th>
+    <th>role</th>
+    <th>actions</th>
+  </tr>
+  </thead>
+  {{#each items as |user|}}
     <tr>
-        <th>email</th>
-        <th>blogs</th>
-        <th>registration</th>
-        <th>last login</th>
-        <th>role</th>
-        <th>actions</th>
+      <td>{{link-to user.email 'users.show' user.id}}</td>
+      <td>{{user.blogs.length}}</td>
+      <td>{{user.registrationDate}}</td>
+      <td>{{user.lastLogin}}</td>
+      <td>
+        {{#power-select
+          selected=user.role
+          options=roles
+          onchange=(action "setUserRole" user role)
+        as |role|
+        }}
+          {{role.name}}
+        {{/power-select}}
+      </td>
+      <td>
+        <button {{action 'deleteUser' user }} class="ui negative basic button">
+          delete
+        </button>
+      </td>
     </tr>
-    </thead>
-    {{#each items as |user|}}
-        <tr>
-            <td>{{link-to user.email 'users.show' user.id}}</td>
-            <td>{{user.blogs.length}}</td>
-            <td>{{user.registrationDate}}</td>
-            <td>{{user.lastLogin}}</td>
-            <td>
-                {{#power-select
-                        selected=user.role
-                        options=roles
-                        onchange=(action "setUserRole" user role)
-                as |role|
-                }}
-                    {{role.name}}
-                {{/power-select}}
-            </td>
-            <td>
-                <button {{action 'deleteUser' user }} class="ui negative basic button">
-                    delete
-                </button>
-            </td>
-        </tr>
-    {{/each}}
+  {{/each}}
 </table>

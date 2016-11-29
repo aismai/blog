@@ -7,11 +7,14 @@ export default Ember.Route.extend({
 
   actions: {
     save(user) {
-      user.save().then((savedUser) => {
-        this.get('authManager').initializeCurrentUser(savedUser).then(() =>{
-          this.transitionTo('blogs');
-        });
-      });
+      user.save()
+          .then((savedUser) => {
+            this.get('authManager')
+                .initializeCurrentUser(savedUser)
+                .then(() => {
+                  this.transitionTo('blogs');
+                });
+          });
     }
   }
 });

@@ -22,12 +22,6 @@ export default imageCropper.extend({
     return this.get('store').findAll('blog-type');
   }),
 
-  // uploadFile: Ember.observer(
-  //   'uploadedFile',
-  // function () {
-  //   console.log('uploaded File');
-  // }),
-
   init() {
     this._super(...arguments);
     const blog = this.get('item') || this.get('store').createRecord('blog', {
@@ -65,10 +59,10 @@ export default imageCropper.extend({
     },
 
     save() {
-
       //TODO: move 'container' to if block
-      const container = this.$(this.get('cropperContainer'));
+      //!
       if(this.get('uploadedFile')){
+        const container = this.$(this.get('cropperContainer'));
         const croppedImage = container.cropper('getCroppedCanvas').toDataURL();
         this.set('blog.cover', croppedImage);
       }

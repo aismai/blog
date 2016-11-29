@@ -7,20 +7,22 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     delete(comment) {
-      let confirmation = confirm('Are you sure?');
+      const confirmation = confirm('Are you sure?');
 
       if (confirmation) {
-        let post = comment.get('post');
-        let user = comment.get('user');
-        user.get('comments').removeObject(comment);
-
+        const post = comment.get('post');
+        const user = comment.get('user');
         //TODO: use user.save().then
-        user.save();
-        post.get('comments').removeObject(comment);
-        post.save().then(() => {
-          comment.destroyRecord();
+        //!
+        user.get('comments').removeObject(comment);
+        user.save().then(() => {
+          post.get('comments').removeObject(comment);
+          post.save().then(() => {
+            comment.destroyRecord();
+          });
         });
       }
+
     }
   }
 });

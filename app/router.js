@@ -3,26 +3,26 @@ import config from './config/environment';
 
 const Router = Ember.Router.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL:  config.rootURL
 });
 
-Router.map(function() {
-  this.route('blogs', function() {
+Router.map(function () {
+  this.route('blogs', function () {
     this.route('new');
-    this.route('edit', { path: '/:blog_id/edit' });
+    this.route('edit', {path: '/:blog_id/edit'});
 
     this.route('show', {
       path: ':blog_id'
     }, function () {
-      this.route('posts', { resetNamespace: true }, function() {
+      this.route('posts', {resetNamespace: true}, function () {
         this.route('new');
-        this.route('edit', { path: '/:post_id/edit' });
+        this.route('edit', {path: '/:post_id/edit'});
 
         this.route('show', {
           path: ':post_id'
         }, function () {
-          this.route('comments', { resetNamespace: true }, function() {
-            this.route('edit', { path: '/:comment_id/edit' });
+          this.route('comments', {resetNamespace: true}, function () {
+            this.route('edit', {path: '/:comment_id/edit'});
             this.route('new');
           });
         });
@@ -30,27 +30,27 @@ Router.map(function() {
     });
   });
 
-  this.route('users', function() {
+  this.route('users', function () {
     this.route('new', {path: '/register'});
     this.route('show', {path: '/:user_id'});
   });
 
-  this.route('blog-type', function() {
+  this.route('blog-type', function () {
     this.route('new');
   });
 
   this.route('login');
 
-  this.route('roles', function() {
+  this.route('roles', function () {
     this.route('new');
-    this.route('edit', { path: '/:role_id/edit' });
-    this.route('show', { path: '/:role_id' }, function () {
+    this.route('edit', {path: '/:role_id/edit'});
+    this.route('show', {path: '/:role_id'}, function () {
     });
 
   });
-  this.route('permissions', function() {
+  this.route('permissions', function () {
     this.route('new');
-    this.route('edit', { path: '/:permission_id/edit' });
+    this.route('edit', {path: '/:permission_id/edit'});
   });
 });
 

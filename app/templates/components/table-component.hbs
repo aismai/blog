@@ -1,32 +1,32 @@
 {{#power-select-multiple
-        options=fieldNames
-        selected=field
-        placeholder="Select fields to hide..."
-        onchange=(action 'hideField' (mut ingnore field))
+  options=fieldNames
+  selected=field
+  placeholder="Select fields to hide..."
+  onchange=(action 'hideField' (mut ingnore field))
 as |field|
 }}
-    {{field.name}}
+  {{field.name}}
 {{/power-select-multiple}}
 
 <table class="ui celled table">
-    <thead>
-    <tr>
-        {{#each fieldNames as |field|}}
-            {{#if field.displayField}}
-                <th>{{field.name}}</th>
-            {{/if}}
-        {{/each}}
-    </tr>
-    </thead>
-    <tbody>
-    {{#each items as |item|}}
-        <tr>
-            {{#each fieldNames as |field|}}
-                {{#if field.displayField}}
-                    <td>{{get item field.name}}</td>
-                {{/if}}
-            {{/each}}
-        </tr>
+  <thead>
+  <tr>
+    {{#each fieldNames as |field|}}
+      {{#if field.displayField}}
+        <th>{{field.name}}</th>
+      {{/if}}
     {{/each}}
-    </tbody>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each items as |item|}}
+    <tr>
+      {{#each fieldNames as |field|}}
+        {{#if field.displayField}}
+          <td>{{get item field.name}}</td>
+        {{/if}}
+      {{/each}}
+    </tr>
+  {{/each}}
+  </tbody>
 </table>

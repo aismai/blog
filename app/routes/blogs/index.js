@@ -20,7 +20,8 @@ export default AuthenticatedRoute.extend({
   delete(blog){
     const promiseUser = blog.get('user');
     promiseUser.then((user) => {
-      user.get('blogs').removeObject(blog);
+      user.get('blogs')
+          .removeObject(blog);
       user.save();
 
       //TODO: also you need to delete all blog's posts
@@ -30,12 +31,15 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     selectBlog(blog) {
-      if (this.get('blogsArray').includes(blog)) {
-        this.get('blogsArray').removeObject(blog);
+      if (this.get('blogsArray')
+              .includes(blog)) {
+        this.get('blogsArray')
+            .removeObject(blog);
         blog.set('isClicked', false);
       } else {
         blog.set('isClicked', true);
-        this.get('blogsArray').push(blog);
+        this.get('blogsArray')
+            .push(blog);
       }
     },
     deleteBlog(blog) {
@@ -47,9 +51,10 @@ export default AuthenticatedRoute.extend({
     deleteMultiple() {
 
       if (this.get('blogsArray')) {
-        this.get('blogsArray').forEach((blog) => {
-          this.delete(blog);
-        });
+        this.get('blogsArray')
+            .forEach((blog) => {
+              this.delete(blog);
+            });
       }
     }
   }

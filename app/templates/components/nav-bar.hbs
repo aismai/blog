@@ -1,23 +1,23 @@
 <div class="ui fixed menu">
-    <div class="ui container">
-        {{#link-to 'blogs' class="header item"}}Gecko{{/link-to}}
-        {{#if authManager.isAuthenticated}}
-            {{#link-to 'blog-type' class='item'}}Categories{{/link-to}}
-            {{#link-to 'blogs' (query-params sortBy=null) class='item'}}Blogs{{/link-to}}
-            {{link-to 'Profile' 'users.show' authManager.currentUser  class='item'}}
-            {{!#if authManager.isAdmin}}
-                <div class="ui simple dropdown item">
-                    Admin
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        {{#link-to 'users' class='item'}}<i class="users icon"></i>Users{{/link-to}}
-                        {{#link-to 'roles' class='item'}}<i class="empire icon"></i>Roles{{/link-to}}
-                    </div>
-                </div>
-            {{!/if}}
-            <a href="#" {{action 'logOut'}} class='right item'><i class="sign out icon"></i></a>
-        {{else}}
-            {{#link-to 'login' class='right item'}}<i class="sign in icon"></i>{{/link-to}}
-        {{/if}}
-    </div>
+  <div class="ui container">
+    {{#link-to 'blogs' class="header item"}}Gecko{{/link-to}}
+    {{#if authManager.isAuthenticated}}
+      {{#link-to 'blog-type' class='item'}}Categories{{/link-to}}
+      {{#link-to 'blogs' (query-params sortBy=null) class='item'}}Blogs{{/link-to}}
+      {{link-to 'Profile' 'users.show' authManager.currentUser  class='item'}}
+      {{!#if authManager.isAdmin}}
+      <div class="ui simple dropdown item">
+        Admin
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#link-to 'users' class='item'}}<i class="users icon"></i>Users{{/link-to}}
+          {{#link-to 'roles' class='item'}}<i class="empire icon"></i>Roles{{/link-to}}
+        </div>
+      </div>
+      {{!/if}}
+      <a href="#" {{action 'logOut'}} class='right item'><i class="sign out icon"></i></a>
+    {{else}}
+      {{#link-to 'login' class='right item'}}<i class="sign in icon"></i>{{/link-to}}
+    {{/if}}
+  </div>
 </div>

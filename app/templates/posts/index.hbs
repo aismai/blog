@@ -1,20 +1,18 @@
 <div id="posts-wrapper" class="skinny-wrapper">
-{{#each model.posts as |post|}}
+  {{#each model.posts as |post|}}
     <div class="post">
-
-        <h2>
-            {{link-to post.title 'comments' post}}
-        </h2>
-        <p class="date">
-            {{#if model.isAuthor}}
-                {{link-to 'edit' 'posts.edit' post}}
-                <button {{action 'deletePost' post}}>
-                    delete
-                </button>
-            {{/if}}
-        </p>
-        <hr>
+      <h2>
+        {{link-to post.title 'comments' post}}
+      </h2>
+      <p class="date">
+        {{#if model.isAuthor}}
+          {{link-to 'edit' 'posts.edit' post}}
+          <button {{action 'deletePost' post}}>
+            delete
+          </button>
+        {{/if}}
+      </p>
+      <hr>
     </div>
-
-{{/each}}
+  {{/each}}
 </div>

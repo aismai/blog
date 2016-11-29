@@ -1,43 +1,43 @@
 <div>
-    <label for="file" class="ui secondary button">
-        <i class="file icon"></i>
-        Add Cover</label>
-    <input type="file" id="file" onchange={{action "loadImage" value=uploadedFile}}>
-    {{!input type='file' id="file" value=uploadedFile onchange='loadImage'}}
+  <label for="file" class="ui secondary button">
+    <i class="file icon"></i>
+    Add Cover</label>
+  <input type="file" id="file" onchange={{action "loadImage" value=uploadedFile}}>
+  {{!input type='file' id="file" value=uploadedFile onchange='loadImage'}}
 </div>
 <br>
 <hr>
 <div class="container">
-    <div class="cropper-preview">
-    </div>
-    <div class="cropper-container">
-        <img id="image" src="">
-    </div>
+  <div class="cropper-preview">
+  </div>
+  <div class="cropper-container">
+    <img id="image" src="">
+  </div>
 </div>
 <hr>
 
 <form class="ui form">
-    <div class="field">
-        <label>Name</label>
-        {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
-    </div>
+  <div class="field">
+    <label>Name</label>
+    {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
+  </div>
 
   <!-- TODO: use 'mut' and remove chooseBlogType action -->
   <!-- do it for all selects where it's possible -->
-    {{#power-select
-            selected=type
-            placeholder="Please, select category"
-            options=blogTypeList
-            onchange=(action "chooseBlogType")
-    as |type|
-    }}
-        {{type.name}}
-    {{/power-select}}
-    <div class="field">
-        <label>Description</label>
-        {{textarea value=blog.description cols="80" rows="6" class="form-control" placeholder="..."}}
-    </div>
-    <div>
-        <input type="submit" class="ui button" {{action 'save' blog}} placeholder={{buttonLabel}}>
-    </div>
+  {{#power-select
+    selected=type
+    placeholder="Please, select category"
+    options=blogTypeList
+    onchange=(action "chooseBlogType")
+  as |type|
+  }}
+    {{type.name}}
+  {{/power-select}}
+  <div class="field">
+    <label>Description</label>
+    {{textarea value=blog.description cols="80" rows="6" class="form-control" placeholder="..."}}
+  </div>
+  <div>
+    <input type="submit" class="ui button" {{action 'save' blog}} placeholder={{buttonLabel}}>
+  </div>
 </form>

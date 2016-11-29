@@ -5,7 +5,7 @@ export default AuthenticatedRoute.extend({
   model(params){
     const postPromise = this.store.findRecord('post', params.post_id);
     postPromise.then((post) => {
-      if(!post.get('blog.isAuthor')){
+      if (!post.get('blog.isAuthor')) {
         this.transitionTo('posts');
       }
     });
@@ -14,9 +14,10 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(post) {
-      post.save().then(() => {
-        this.transitionTo('posts');
-      });
+      post.save()
+          .then(() => {
+            this.transitionTo('posts');
+          });
     },
 
     willTransition(transition) {

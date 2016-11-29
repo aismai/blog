@@ -11,20 +11,25 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(comment) {
-      comment.save().then((savedComment) => {
-        const post = savedComment.get('post');
-        const user = savedComment.get('user');
-        user.get('comments').pushObject(savedComment);
-        user.save();
-        post.get('comments').pushObject(savedComment);
-        post.save().then(() => {
-          this.transitionTo('comments');
-        });
-      });
+      comment.save()
+             .then((savedComment) => {
+               const post = savedComment.get('post');
+               const user = savedComment.get('user');
+               user.get('comments')
+                   .pushObject(savedComment);
+               user.save();
+               post.get('comments')
+                   .pushObject(savedComment);
+               post.save()
+                   .then(() => {
+                     this.transitionTo('comments');
+                   });
+             });
     },
 
     willTransition() {
-      this.controller.get('model').unloadRecord();
+      this.controller.get('model')
+          .unloadRecord();
     }
   }
 });

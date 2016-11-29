@@ -2,18 +2,18 @@
 
 
 <table class="ui celled table">
-    <thead>
+  <thead>
+  <tr>
+    <th>Category</th>
+    <th>Blogs</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each model as |category| }}
     <tr>
-        <th>Category</th>
-        <th>Blogs</th>
+      <td>{{category.name}}</td>
+      <td>{{link-to category.blogs.length 'blogs'  (query-params blog-type= model.id)}}</td>
     </tr>
-    </thead>
-    <tbody>
-    {{#each model as |category| }}
-        <tr>
-            <td>{{category.name}}</td>
-            <td>{{link-to category.blogs.length 'blogs'  (query-params blog-type= model.id)}}</td>
-        </tr>
-    {{/each}}
-    </tbody>
+  {{/each}}
+  </tbody>
 </table>

@@ -10,7 +10,8 @@ export default Ember.Route.extend({
       const usersPromise = this.store.findAll('user');
       usersPromise.then((users) => {
         users.forEach((user) => {
-          if (user.get('role.id').includes(role.get('id'))) {
+          if (user.get('role.id')
+                  .includes(role.get('id'))) {
             user.set('role', null);
             user.save();
           }

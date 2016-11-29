@@ -4,7 +4,7 @@ export default AuthenticatedRoute.extend({
   model(param) {
     const commentPromise = this.store.findRecord('comment', param.comment_id);
     commentPromise.then((comment) => {
-      if(!comment.get('isAuthor')) {
+      if (!comment.get('isAuthor')) {
         this.transitionTo('comments');
       }
     });
@@ -13,9 +13,10 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(comment) {
-      comment.save().then(() => {
-        this.transitionTo('comments');
-      });
+      comment.save()
+             .then(() => {
+               this.transitionTo('comments');
+             });
     },
 
     willTransition(transition) {

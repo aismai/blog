@@ -10,7 +10,8 @@ export default Ember.Route.extend({
       const promiseRoles = this.store.findAll('role');
       promiseRoles.then((roles) => {
         roles.forEach((role) => {
-          role.get('permissions').removeObject(permission);
+          role.get('permissions')
+              .removeObject(permission);
           role.save();
         });
         permission.destroyRecord();
