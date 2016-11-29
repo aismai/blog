@@ -13,6 +13,8 @@ export default AuthenticatedRoute.extend({
         let blog = post.get('blog');
         let user = post.get('user');
         user.get('posts').removeObject(post);
+
+        //TODO: use user.save().then. Also you need to delete all comments
         user.save();
         blog.get('posts').removeObject(post);
         blog.save().then(() => {

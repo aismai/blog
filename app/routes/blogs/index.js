@@ -22,6 +22,8 @@ export default AuthenticatedRoute.extend({
     promiseUser.then((user) => {
       user.get('blogs').removeObject(blog);
       user.save();
+
+      //TODO: also you need to delete all blog's posts
       blog.destroyRecord();
     });
   },

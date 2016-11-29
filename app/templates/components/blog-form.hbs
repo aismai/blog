@@ -21,6 +21,9 @@
         <label>Name</label>
         {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
     </div>
+
+  <!-- TODO: use 'mut' and remove chooseBlogType action -->
+  <!-- do it for all selects where it's possible -->
     {{#power-select
             selected=type
             placeholder="Please, select category"

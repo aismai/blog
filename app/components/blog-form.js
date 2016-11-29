@@ -65,6 +65,8 @@ export default imageCropper.extend({
     },
 
     save() {
+
+      //TODO: move 'container' to if block
       const container = this.$(this.get('cropperContainer'));
       if(this.get('uploadedFile')){
         const croppedImage = container.cropper('getCroppedCanvas').toDataURL();
