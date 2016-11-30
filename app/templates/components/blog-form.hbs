@@ -25,10 +25,10 @@
   <!-- TODO: use 'mut' and remove chooseBlogType action -->
   <!-- do it for all selects where it's possible -->
   {{#power-select
-    selected=type
+    selected=blog.blogType
     placeholder="Please, select category"
     options=blogTypeList
-    onchange=(action "chooseBlogType")
+    onchange=(action (mut blog.blogType) value=type)
   as |type|
   }}
     {{type.name}}

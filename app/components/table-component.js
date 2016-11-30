@@ -22,7 +22,6 @@ export default Ember.Component.extend({
       this.get('fieldNames').forEach((field) => {
         Ember.set(field, 'displayField', true);
         selected.forEach((selectedField) => {
-          // field.name === selectedField.name
           if (field.name.includes(selectedField.name)) {
             Ember.set(field, 'displayField', false);
           }
