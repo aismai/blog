@@ -5,11 +5,14 @@ import moment from 'moment';
 export default DS.Model.extend({
   email: DS.attr('string'),
   password: DS.attr('string'),
-  registration: DS.attr('date', {
-    defaultValue() {
-      return new Date();
+  registration: DS.attr(
+    'date',
+    {
+      defaultValue() {
+        return new Date();
+      }
     }
-  }),
+  ),
 
   login: DS.attr('date'),
   role: DS.belongsTo('role'),
@@ -22,7 +25,10 @@ export default DS.Model.extend({
     return moment(this.get('registration')).format("DD.MM.YYYY");
   }),
 
-  lastLogin: Ember.computed('login', function () {
-    return moment(this.get('login')).format("DD.MM.YYYY, HH:mm:ss");
-  })
+  lastLogin: Ember.computed(
+    'login',
+    function () {
+      return moment(this.get('login')).format("DD.MM.YYYY, HH:mm:ss");
+    }
+  )
 });
