@@ -1,14 +1,16 @@
-import AuthenticatedRoute from '../authenticated-route';
+import AuthenticatedRoute from '../../../routes/authenticated-route';
 import Ember from 'ember';
 
 export default AuthenticatedRoute.extend({
 
-  hasPermission: Ember.computed('authManager.currentPermissions', function () {
-    return !!this.get('authManager.currentPermissions')
-                 .find((permission) => {
-                   return permission.get('code') === 'canEditAllBlogs';
-                 });
-  }),
+  hasPermission: Ember.computed(
+    'authManager.currentPermissions',
+    function () {
+      return !!this.get('authManager.currentPermissions')
+        .find((permission) => {
+          return permission.get('code') === 'canEditAllBlogs';
+        });
+    }),
 
   model(params){
     const blogPromise = this.store.findRecord('blog', params.blog_id);
@@ -25,9 +27,9 @@ export default AuthenticatedRoute.extend({
   actions: {
     save(blog) {
       blog.save()
-          .then(() => {
-            this.transitionTo('blogs');
-          });
+        .then(() => {
+          this.transitionTo('blogs');
+        });
     },
 
     willTransition(transition) {
