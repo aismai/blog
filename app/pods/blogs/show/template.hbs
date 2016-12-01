@@ -1,8 +1,2 @@
-<h1 id="page-title">{{link-to model.name 'posts'}}</h1>
-
-{{#if model.isAuthor}}
-  <div id="new-post">
-    {{link-to 'new post' 'posts.new' model class="button"}}
-  </div>
-{{/if}}
+<img class="ui centered small circular image" src="{{model.cover}}">
 {{outlet}}

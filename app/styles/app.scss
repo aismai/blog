@@ -19,7 +19,7 @@
 
 .blog-content {
   height: 100px;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 #delete-multiple {
@@ -61,4 +61,16 @@
 
 #file {
   display: none;
+}
+
+.post-content {
+  height: 150px;
+  overflow: hidden;
+
+}
+
+#new-post {
+  a {
+    color: black;
+  }
 }

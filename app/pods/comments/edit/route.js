@@ -1,4 +1,4 @@
-import AuthenticatedRoute from '../../../routes/authenticated-route';
+import AuthenticatedRoute from '../../athenticated-route/route';
 
 export default AuthenticatedRoute.extend({
   model(param) {

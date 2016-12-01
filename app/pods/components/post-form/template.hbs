@@ -1,19 +1,11 @@
-<div class="skinny-wrapper wrapper-padding">
-  <label>
-    Title
-  </label>
-  <br>
-  {{input type="text" value=item.title class="form-control" placeholder="The title of the post"}}
-  <br>
-  <label>
-    Body
-  </label>
-  <br>
-  {{textarea value=item.body cols="80" rows="6" class="form-control" placeholder="Write post body here..."}}
-  <br>
-  <input type="submit" {{action 'buttonClicked' item}}  placeholder={{buttonLabel}}>
-  {{link-to 'back' 'posts' class="button"}}
+<div class="ui form">
+  <div class="field">
+    <label>Title</label>
+    {{input type="text" value=item.title class="form-control" placeholder="The title of the post"}}
+  </div>
+  <div class="field">
+    <label>Text</label>
+    {{textarea value=item.body placeholder="Write post body here..."}}
+  </div>
+  <input type="submit" class="ui black basic button" {{action 'buttonClicked' item}} placeholder={{buttonLabel}}>
 </div>
-
-
-

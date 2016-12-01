@@ -1,11 +1,6 @@
-<div id="post-show-content" class="skinny-wrapper wrapper-padding">
-  <header>
-    <h1>{{model.title}}</h1>
-    <hr>
-  </header>
-  <div class="content">
-    <p>{{model.body}}</p>
-  </div>
-  <hr>
-  {{outlet}}
+<div class="ui segment">
+  <h2 class="ui header">{{model.title}}</h2>
+  <div class="ui clearing divider"></div>
+  <p>{{model.body}}</p>
 </div>
+{{outlet}}

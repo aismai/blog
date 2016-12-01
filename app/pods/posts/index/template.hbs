@@ -1,18 +1,34 @@
-<div id="posts-wrapper" class="skinny-wrapper">
-  {{#each model.posts as |post|}}
-    <div class="post">
-      <h2>
-        {{link-to post.title 'comments' post}}
-      </h2>
-      <p class="date">
-        {{#if model.isAuthor}}
-          {{link-to 'edit' 'posts.edit' post}}
-          <button {{action 'deletePost' post}}>
-            delete
-          </button>
-        {{/if}}
-      </p>
-      <hr>
+{{#if model.isAuthor}}
+  <div id="new-post">
+    <div class="ui black secondary basic icon button">
+      {{#link-to 'posts.new' model}}
+        <i class="write icon"></i>new post
+      {{/link-to}}
     </div>
-  {{/each}}
-</div>
+  </div>
+{{/if}}
+
+{{#each model.posts as |post|}}
+  <div class="ui items">
+    <div class="item">
+      <div class="ui small image">
+        <img src="/assets/images/sanctum_sanctorum.jpg">
+      </div>
+      <div class="content post-content">
+        <div class="header">{{link-to post.title 'comments' post}}</div>
+        <div class="meta">
+          <span class="price">comments: {{post.comments.length}}</span>
+          {{#if model.isAuthor}}
+            {{link-to 'edit' 'posts.edit' post}}
+            <button {{action 'deletePost' post}}>
+              delete
+            </button>
+          {{/if}}
+        </div>
+        <div class="description">
+          <p>{{post.body}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}

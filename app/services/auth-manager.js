@@ -11,7 +11,7 @@ export default Ember.Service.extend({
 
   setLastLoginDate(user) {
     user.set('login', new Date());
-    user.save();
+    return user.save();
   },
 
   findUser(email, pass){
@@ -44,8 +44,9 @@ export default Ember.Service.extend({
 
   initializeCurrentUser(user) {
     this.setCurrentUser(user);
-    this.setLastLoginDate(user);
-    return this.initializeUserPermissions(user);
+    return this.setLastLoginDate(user).then(() => {
+      return this.initializeUserPermissions(user);
+    });
   }
 
 });
