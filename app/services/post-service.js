@@ -1,26 +1,32 @@
 import Ember from 'ember';
+import PostConst from '../const/post';
 
 export default Ember.Service.extend({
   commentService: Ember.inject.service('comment-service'),
+  userService: Ember.inject.service('user-service'),
+
+  postAddObject(post, object) {
+    const modelName = PostConst[object.get('constructor.modelName')];
+    post.get(modelName).pushObject(object);
+    return post.save();
+  },
 
   deletePost(post) {
-    post.get('comments').then((comments) => {
-      comments.forEach((comment) => {
-        this.get('commentService').deleteComment(comment);
-      });
-    });
-
+    post.get('comments')
+      .forEach((comment) => {
+          this.get('commentService').deleteComment(comment);
+        }
+      );
     const user = post.get('user');
-    user.get('posts').then((posts) => {
-      posts.removeObject(post);
-      user.save();
-    });
-
-    const blog = post.get('blog');
-    blog.get('posts').then((posts) => {
-      posts.removeObject(post);
-    });
-    blog.save();
-    post.destroyRecord();
+    this.get('userService').removeObject(user, post).then(() => {
+        const blog = post.get('blog');
+        blog.get('posts')
+          .removeObject(post);
+        blog.save().then(() => {
+            post.destroyRecord({ adapterOptions: { flashMessage: true } });
+          }
+        );
+      }
+    );
   }
 });
