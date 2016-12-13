@@ -1,0 +1,48 @@
+<div class="ui {{if gridService.blockView 'block' 'list'}} {{if (hasPermission 'canDeleteAllBlogs')
+                                                                'can-delete-all-blogs'}}">
+    {{#each filterService.blogs as |blog|}}
+        <div class="ui card {{if blog.isClicked 'blog-clicked'}}" {{action 'selectBlog' blog}}>
+            <div class="image">
+                <img src="{{blog.cover}}">
+            </div>
+            <div class="content blog-content">
+                <a class="header">{{link-to blog.name 'posts' blog.id}}</a>
+                <div class="meta">
+                    <span class="date">category: {{blog.blogType.name}}</span>
+                </div>
+                <div class="description">
+                    {{blog.description}}
+                </div>
+            </div>
+            <div class="extra content">
+          <span class="right floated">
+              {{#if (hasPermission 'canDeleteAllBlogs' 'canEditAllBLogs')}}
+                  {{#has-permission  permissionCode='canEditAllBlogs'}}
+                      {{#link-to 'blogs.edit' blog.id}}
+                          <i class="edit icon"></i>
+                      {{/link-to}}
+                  {{/has-permission}}
+                  {{#has-permission  permissionCode='canDeleteAllBlogs'}}
+                      <span {{action 'deleteBlog' blog }}>
+                  <i class="ban icon"></i>
+                </span>
+                  {{/has-permission}}
+              {{else}}
+                  {{#if (userIsBlogAuthor blog.id)}}
+                      {{#link-to 'blogs.edit' blog.id}}
+                          <i class="edit icon"></i>
+                      {{/link-to}}
+                      <span {{action 'deleteBlog' blog }}>
+                  <i class="ban icon"></i>
+                </span>
+                  {{/if}}
+              {{/if}}
+          </span>
+                {{#link-to 'posts' blog.id}}
+                    <i class="file icon"></i>
+                    {{blog.posts.length}}
+                {{/link-to}}
+            </div>
+        </div>
+    {{/each}}
+</div>
