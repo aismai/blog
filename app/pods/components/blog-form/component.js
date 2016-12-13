@@ -4,7 +4,6 @@ import Ember from 'ember';
 export default imageCropper.extend({
   store: Ember.inject.service(),
   blog: undefined,
-  submit: 0,
   uploadedFile: undefined,
 
   cropperContainer: '.cropper-container > img',
@@ -25,7 +24,7 @@ export default imageCropper.extend({
   init() {
     this._super(...arguments);
     const blog = this.get('item') || this.get('store').createRecord('blog', {
-        user: this.get('authManager.currentUser'),
+        user: this.get('authService.currentUser'),
       });
     this.set('blog', blog);
   },

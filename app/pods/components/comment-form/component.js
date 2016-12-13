@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    buttonClicked(commentParams) {
+    save(commentParams) {
       this.sendAction('action', commentParams);
     }
   }

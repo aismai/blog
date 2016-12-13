@@ -1,9 +1,19 @@
 {{nav-bar}}
+{{#each flashMessages.queue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+    {{#if flash.componentName}}
+      {{component flash.componentName content=flash.content}}
+    {{else}}
+      <div class="ui {{flash.type}} message">
+        <i class="close icon"></i>
+        <div class="header">
+        </div>
+        <p>{{flash.message}}</p>
+      </div>
+    {{/if}}
+  {{/flash-message}}
+{{/each}}
 
 <div id='main-container' class="ui container">
-  <div class="ui grid">
-    <div class="sixteen wide column">
       {{outlet}}
-    </div>
-  </div>
 </div>

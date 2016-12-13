@@ -8,8 +8,8 @@
   </div>
 {{/if}}
 
-{{#each model.posts as |post|}}
-  <div class="ui items">
+<div class="ui items">
+  {{#each model.posts as |post|}}
     <div class="item">
       <div class="ui small image">
         <img src="/assets/images/sanctum_sanctorum.jpg">
@@ -30,5 +30,6 @@
         </div>
       </div>
     </div>
-  </div>
-{{/each}}
+  {{/each}}
+</div>
+

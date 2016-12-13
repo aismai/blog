@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: '',
   permission: undefined,
-  hasPermission: Ember.computed('authManager.currentPermissions', 'permission', function () {
-      return this.get('authManager.currentPermissions').filter((permission) => {
+  hasPermission: Ember.computed('authService.currentPermissions', 'permission', function () {
+      return this.get('authService.currentPermissions').filter((permission) => {
         return permission.get('code') === this.get('permission');
       });
   }),

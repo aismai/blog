@@ -28,7 +28,7 @@ export default Ember.Service.extend({
 
   initializeUserPermissions(user) {
     const _this = this;
-    return new Promise(function (resolve) {
+    return new Ember.RSVP.Promise(function (resolve) {
       //TODO: check permissions.length
       //!
       if (user.get('role.permissions.length')) {

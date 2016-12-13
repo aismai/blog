@@ -30,7 +30,7 @@ export default DS.Model.extend({
   isAuthor: Ember.computed(
     'user.id',
     function () {
-      return (this.get('user.id') === this.get('authManager.currentUser.id'));
+      return (this.get('user.id') === this.get('authService.currentUser.id'));
     }
   ),
   dateOfCreation: Ember.computed(

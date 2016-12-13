@@ -1,39 +1,32 @@
-{{link-to 'leave comment:' 'comments.new' model.id class="button"}}
+  {{link-to 'leave comment:' 'comments.new' model.id class="button"}}
 
-<div class="ui comments">
-  <h3 class="ui dividing header">Comments</h3>
-  {{#each model.comments as |comment|}}
-  <div class="comment">
-    <a class="avatar">
-      <img src="/assets/images/sanctum_sanctorum.jpg">
-    </a>
-    <div class="content">
-      <a class="author">{{comment.user.email}}</a>
-      <div class="metadata">
-        <span class="date">{{comment.dateOfCreation}}</span>
+  <div class="ui comments">
+    <h3 class="ui dividing header">Comments</h3>
+    {{#each model.comments as |comment|}}
+      <div class="comment">
+        <a class="avatar">
+          <img src="/assets/images/sanctum_sanctorum.jpg">
+        </a>
+        <div class="content">
+          <a class="author">{{comment.user.email}}</a>
+          <div class="metadata">
+            <span class="date">{{comment.dateOfCreation}}</span>
+          </div>
+          <div class="text">
+            {{comment.body}}
+          </div>
+          <div class="actions">
+            {{#if comment.isAuthor}}
+              {{link-to 'edit' 'comments.edit' comment}}
+              <button {{action 'delete' comment}}>
+                delete
+              </button>
+            {{/if}}
+          </div>
+        </div>
       </div>
-      <div class="text">
-        {{comment.body}}
-      </div>
-      <div class="actions">
-        {{#if comment.isAuthor}}
-          {{link-to 'edit' 'comments.edit' comment}}
-          <button {{action 'delete' comment}}>
-            delete
-          </button>
-        {{/if}}
-      </div>
-    </div>
+    {{/each}}
+
+    <!--todo: use comment-form component-->
   </div>
-  {{/each}}
-
-  <!--todo: use comment-form component-->
-  <form class="ui reply form">
-    <div class="field">
-      <textarea placeholder="NOT WORKING. under maintenance"></textarea>
-    </div>
-    <div class="ui black labeled submit icon button">
-      <i class="icon edit"></i> Add Reply
-    </div>
-  </form>
-</div>
+  {{!comment-form item=model.id buttonLabel='leave a comment' action='save'}}

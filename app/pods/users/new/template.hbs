@@ -10,7 +10,7 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            {{input type="text" value=model.email  placeholder="E-mail address"}}
+            {{input type="text" value=model.email  placeholder="E-mail address" autofocus='autofocus'}}
           </div>
         </div>
         <div class="field">
@@ -21,9 +21,6 @@
         </div>
         <input type="submit" {{action 'save' model}}  class="ui fluid large black submit button" placeholder='Sign Up'>
       </div>
-
-      <div class="ui error message"></div>
-
     </form>
   </div>
 </div>
