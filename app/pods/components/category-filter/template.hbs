@@ -1,0 +1,8 @@
+{{#power-select
+  selected=selected
+  options=categories
+  onchange=(action "filterByCategory")
+as |category|
+}}
+  {{category.name}}
+{{/power-select}}
