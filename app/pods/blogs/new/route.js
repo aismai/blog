@@ -1,21 +1,20 @@
 import AuthenticatedRoute from '../../athenticated-route/route';
+import Ember from 'ember';
 
 export default AuthenticatedRoute.extend({
 
+  userService: Ember.inject.service(),
   actions: {
     save(blog) {
       blog.save()
-          .then((savedBlog) => {
-            const promiseUser = savedBlog.get('user');
-            promiseUser.then((user) => {
-              user.get('blogs')
-                  .pushObject(savedBlog);
-              user.save()
-                  .then(() => {
-                    this.transitionTo('blogs');
-                  });
-            });
+        .then((savedBlog) => {
+          savedBlog.get('user').then((user) => {
+            this.get('userService').userAddObject(user, savedBlog)
+              .then(() => {
+                this.transitionTo('blogs');
+              });
           });
+        });
     }
 
   }

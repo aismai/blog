@@ -9,8 +9,6 @@ export default AuthenticatedRoute.extend({
     delete(comment) {
       const confirmation = confirm('Are you sure?');
       if (confirmation) {
-        // TODO: create service
-        // !
         this.get('commentService').deleteComment(comment);
       }
     }

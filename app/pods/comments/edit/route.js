@@ -13,10 +13,10 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(comment) {
-      comment.save()
-             .then(() => {
-               this.transitionTo('comments');
-             });
+      comment.save({ adapterOptions: { flashMessage: true } })
+        .then(() => {
+          this.transitionTo('comments');
+        });
     },
 
     willTransition(transition) {
@@ -31,6 +31,5 @@ export default AuthenticatedRoute.extend({
         }
       }
     }
-
   }
 });

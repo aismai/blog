@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     save(user) {
       user.save()
           .then((savedUser) => {
-            this.get('authManager')
+            this.get('authService')
                 .initializeCurrentUser(savedUser)
                 .then(() => {
                   this.transitionTo('blogs');

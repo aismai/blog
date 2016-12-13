@@ -5,31 +5,26 @@ export default AuthenticatedRoute.extend({
   model() {
     return this.store.createRecord('comment', {
       post: this.modelFor('posts.show'),
-      user: this.get('authManager.currentUser')
+      user: this.get('authService.currentUser')
     });
   },
 
   actions: {
     save(comment) {
       comment.save()
-             .then((savedComment) => {
-               const post = savedComment.get('post');
-               const user = savedComment.get('user');
-               user.get('comments')
-                   .pushObject(savedComment);
-               user.save();
-               post.get('comments')
-                   .pushObject(savedComment);
-               post.save()
-                   .then(() => {
-                     this.transitionTo('comments');
-                   });
-             });
+        .then((savedComment) => {
+          this.get('postService').postAddObject(savedComment.get('post'), savedComment).then(() => {
+            this.get('userService').userAddObject(savedComment.get('user'), savedComment)
+              .then(() => {
+                this.transitionTo('comments');
+              });
+          });
+        });
     },
 
     willTransition() {
       this.controller.get('model')
-          .unloadRecord();
+        .unloadRecord();
     }
   }
 });

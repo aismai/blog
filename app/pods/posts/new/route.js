@@ -1,6 +1,7 @@
 import AuthenticatedRoute from '../../athenticated-route/route';
-
+import Ember from 'ember';
 export default AuthenticatedRoute.extend({
+  userService: Ember.inject.service(),
 
   model() {
     const blog = this.modelFor('blogs.show');
@@ -9,7 +10,7 @@ export default AuthenticatedRoute.extend({
     } else {
       return this.store.createRecord('post', {
         blog: blog,
-        user: this.get('authManager.currentUser')
+        user: this.get('authService.currentUser')
       });
     }
   },
@@ -17,24 +18,20 @@ export default AuthenticatedRoute.extend({
   actions: {
     save(post) {
       post.save()
-          .then((savedPost) => {
-            const blog = savedPost.get('blog');
-            const user = savedPost.get('user');
-            user.get('posts')
-                .pushObject(savedPost);
-            user.save();
-            blog.get('posts')
-                .pushObject(savedPost);
-            blog.save()
-                .then(() => {
+        .then((savedPost) => {
+            this.get('userService').userAddObject(savedPost.get('user'), savedPost);
+            this.get('blogService').blogAddObject(savedPost.get('blog'), savedPost)
+              .then(() => {
                   this.transitionTo('posts');
-                });
-          });
+                }
+              );
+          }
+        );
     },
 
     willTransition() {
       this.controller.get('model')
-          .unloadRecord();
+        .unloadRecord();
     }
 
   }

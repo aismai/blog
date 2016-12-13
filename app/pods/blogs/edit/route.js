@@ -4,9 +4,9 @@ import Ember from 'ember';
 export default AuthenticatedRoute.extend({
 
   hasPermission: Ember.computed(
-    'authManager.currentPermissions',
+    'authService.currentPermissions',
     function () {
-      return !!this.get('authManager.currentPermissions')
+      return !!this.get('authService.currentPermissions')
         .find((permission) => {
           return permission.get('code') === 'canEditAllBlogs';
         });
@@ -26,7 +26,7 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(blog) {
-      blog.save()
+      blog.save({ adapterOptions: { flashMessage: true } })
         .then(() => {
           this.transitionTo('blogs');
         });

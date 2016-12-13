@@ -14,10 +14,10 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     save(post) {
-      post.save()
-          .then(() => {
-            this.transitionTo('posts');
-          });
+      post.save({ adapterOptions: { flashMessage: true } })
+        .then(() => {
+          this.transitionTo('posts');
+        });
     },
 
     willTransition(transition) {

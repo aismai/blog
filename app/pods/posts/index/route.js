@@ -11,8 +11,6 @@ export default AuthenticatedRoute.extend({
       let confirmation = confirm('Are you sure?');
 
       if (confirmation) {
-        //TODO: create service
-        // !
         this.get('postService').deletePost(post);
       }
     }
