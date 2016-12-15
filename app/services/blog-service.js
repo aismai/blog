@@ -20,8 +20,13 @@ export default Ember.Service.extend({
       );
 
     blog.get('blogType').then((type) => {
-      console.log(this.get('store')
-                      .findRecord('blog-type', type.id));
+      type.get('blogs').removeObject(blog);
+      type.save();
+      // const blogType = this.get('store')
+      //                 .findRecord('blog-type', type.id);
+      // console.log(blogType);
+      // blogType.get('blogs').removeObject(blog);
+      // blogType.save();
     });
 
     blog.get('user').then((user) => {
