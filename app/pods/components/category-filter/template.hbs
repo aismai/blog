@@ -1,8 +1,12 @@
-{{#power-select
-  selected=selected
-  options=categories
-  onchange=(action "filterByCategory")
-as |category|
-}}
-  {{category.name}}
-{{/power-select}}
+<div class="dropdown-filter">
+  {{#power-select
+    selected=filterValue
+    options=categories
+    placeholder='Select category...'
+    allowClear=true
+    onchange=(action "filter")
+  as |category|
+  }}
+    {{category.name}}
+  {{/power-select}}
+</div>

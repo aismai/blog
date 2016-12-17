@@ -1,24 +1,25 @@
 import Ember from 'ember';
+import BaseFilter from '../base-filter/component';
 
-export default Ember.Component.extend({
+export default BaseFilter.extend({
   tagName:           '',
   store:             Ember.inject.service(),
-  categories:        undefined,
-  blogsInitialState: undefined,
+  filterService:     Ember.inject.service('filter-service'),
 
-  init() {
-    this._super(...arguments);
-    this.set('categories', this.get('store')
-                               .findAll('blog-type'));
-    this.set('blogsInitialState', this.get('filterService.blogs'));
-  },
+  categories: Ember.computed(function () {
+    return this.get('store')
+               .findAll('blog-type');
+  }),
 
-  actions: {
-    filterByCategory(category) {
-      this.set('selected', category);
-      const filteredBlogsArray = this.get('blogsInitialState')
+  run() {
+    const category = this.get('filterValue');
+    if (category) {
+      const filteredBlogsArray = this.get('filterService.filteredBlogs')
                                      .filter((blog) => {
+                                       return blog.get('blogType.name') === category.get('name');
                                      });
+      this.get('filterService')
+          .setBlogs(filteredBlogsArray);
     }
   }
 });
