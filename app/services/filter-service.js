@@ -3,16 +3,15 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   store: Ember.inject.service(),
   blogs: undefined,
-
+  filteredBlogs: undefined,
   init() {
-    this.initBlogs();
+    this.get('store').findAll('blog').then((blogs) => {
+      this.set('blogs', blogs);
+      this.set('filteredBlogs', blogs);
+    });
   },
 
-  initBlogs() {
-    this.set('blogs', this.get('store').findAll('blog'));
-  },
-
-  setBlogs(filteredBlogs) {
-    this.set('blogs', filteredBlogs);
+  setBlogs(blogs) {
+    this.set('filteredBlogs', blogs);
   }
 });
