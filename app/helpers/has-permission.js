@@ -6,7 +6,8 @@ export default Ember.Helper.extend({
     //TODO: refactor. Use params.forEach instead of for, use findBy instead of find
     //!
     permissionParams.forEach((permission) => {
-      if(this.get('authService.currentPermissions').findBy('code', permission)){
+      if (this.get('authService.currentPermissions')
+              .findBy('code', permission)) {
         this.set('hasPermission', true);
       }
     });
