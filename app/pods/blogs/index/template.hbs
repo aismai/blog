@@ -5,7 +5,6 @@
       delete Blogs
     </button>
   {{/has-permission}}
-  {{search-filter}}
   <div class="ui right floated main menu">
     {{#if gridService.blockView}}
       <a class="bug popup icon item" href="#" {{action 'setView'}}>
@@ -17,7 +16,7 @@
       </a>
     {{/if}}
   </div>
-  {{category-filter}}
+  {{main-filter}}
 </div>
 
 {{blog-list blogs='setBlogsArray'}}

@@ -1,6 +1,6 @@
 <div class="ui {{if gridService.blockView 'block' 'list'}} {{if (hasPermission 'canDeleteAllBlogs')
                                                                 'can-delete-all-blogs'}}">
-    {{#each filterService.blogs as |blog|}}
+    {{#each filterService.filteredBlogs as |blog|}}
         <div class="ui card {{if blog.isClicked 'blog-clicked'}}" {{action 'selectBlog' blog}}>
             <div class="image">
                 <img src="{{blog.cover}}">
