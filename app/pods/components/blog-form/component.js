@@ -55,15 +55,9 @@ export default imageCropper.extend({
     chooseBlogType(type){
       const selectedType = this.set('type', type);
       this.get('blog').set('blogType', selectedType);
-      type.get('blogs').pushObject(this.get('blog'));
-      type.save();
-
-
     },
 
     save() {
-      //TODO: move 'container' to if block
-      //!
       if(this.get('uploadedFile')){
         const container = this.$(this.get('cropperContainer'));
         const croppedImage = container.cropper('getCroppedCanvas').toDataURL();

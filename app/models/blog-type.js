@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  name: DS.attr('string'),
-  blogs: DS.hasMany('blogs')
+  name: DS.attr('string')
 });

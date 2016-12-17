@@ -3,7 +3,6 @@
     <i class="file icon"></i>
     Add Cover</label>
   <input type="file" id="file" onchange={{action "loadImage" value=uploadedFile}}>
-  {{!input type='file' id="file" value=uploadedFile onchange='loadImage'}}
 </div>
 <br>
 <hr>
@@ -21,14 +20,13 @@
     <label>Name</label>
     {{input type="text" value=blog.name  placeholder="The name of the Blog"}}
   </div>
-
   <!-- TODO: use 'mut' and remove chooseBlogType action -->
   <!-- do it for all selects where it's possible -->
   {{#power-select
     selected=blog.blogType
     placeholder="Please, select category"
     options=blogTypeList
-    onchange=(action (mut blog.blogType) value=type)
+    onchange=(action "chooseBlogType")
   as |type|
   }}
     {{type.name}}
