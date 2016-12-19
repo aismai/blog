@@ -1,0 +1,10 @@
+{{#power-select
+  selected=filterValue
+  options=users
+  placeholder='Select category...'
+  allowClear=true
+  onchange=(action "filter")
+as |user|
+}}
+  {{user.email}}
+{{/power-select}}

@@ -237,13 +237,26 @@
 
 .main-filter {
   position: relative;
+
   .search-filter {
-    margin-left: 500px;
+    margin-left: 700px;
     position: absolute;
   }
+
   .dropdown-filter {
     width: 200px;
-    margin-left: 280px;
+    margin-left: 490px;
+    position: absolute;
+    .ember-power-select-trigger.ember-view.ember-basic-dropdown-trigger {
+      height: 37px;
+    }
+    .ember-power-select-placeholder {
+      margin-top: 4px;
+    }
+  }
+  .user-filter {
+    width: 200px;
+    margin-left: 270px;
     position: absolute;
     .ember-power-select-trigger.ember-view.ember-basic-dropdown-trigger {
       height: 37px;
