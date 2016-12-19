@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  tagName: '',
   filterService: Ember.inject.service('filter-service'),
   registeredFilters: [],
 

@@ -1,12 +1,10 @@
-<div class="dropdown-filter">
-  {{#power-select
-    selected=filterValue
-    options=categories
-    placeholder='Select category...'
-    allowClear=true
-    onchange=(action "filter")
-  as |category|
-  }}
-    {{category.name}}
-  {{/power-select}}
-</div>
+{{#power-select
+  selected=filterValue
+  options=categories
+  placeholder='Select category...'
+  allowClear=true
+  onchange=(action "filter")
+as |category|
+}}
+  {{category.name}}
+{{/power-select}}

@@ -235,6 +235,22 @@
   margin-bottom: 0em !important;
 }
 
-.dropdown-filter {
-  width: 150px;
+.main-filter {
+  position: relative;
+  .search-filter {
+    margin-left: 500px;
+    position: absolute;
+  }
+  .dropdown-filter {
+    width: 200px;
+    margin-left: 280px;
+    position: absolute;
+    .ember-power-select-trigger.ember-view.ember-basic-dropdown-trigger {
+      height: 37px;
+    }
+    .ember-power-select-placeholder {
+      margin-top: 4px;
+    }
+  }
 }
+
