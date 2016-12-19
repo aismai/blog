@@ -5,7 +5,7 @@
       delete Blogs
     </button>
   {{/has-permission}}
-  {{main-filter}}
+  {{filters/main-filter}}
   <div class="ui right floated main menu">
     {{#if gridService.blockView}}
       <a class="bug popup icon item" href="#" {{action 'setView'}}>
