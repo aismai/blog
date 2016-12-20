@@ -256,7 +256,7 @@
   }
   .user-filter {
     width: 200px;
-    margin-left: 270px;
+    margin-left: 278px;
     position: absolute;
     .ember-power-select-trigger.ember-view.ember-basic-dropdown-trigger {
       height: 37px;
@@ -264,6 +264,15 @@
     .ember-power-select-placeholder {
       margin-top: 4px;
     }
+    .ember-power-select-selected-item {
+      margin-top: 4px;
+    }
+    .ember-power-select-clear-btn {
+      margin-top: 4px;
+    }
   }
 }
 
+.delete-multiple {
+  box-shadow: 0 1px 10px 0 #009fe2, 0 0 0 0 !important;
+}

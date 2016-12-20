@@ -8,10 +8,6 @@ export default Ember.Component.extend({
     this._super(...arguments);
   },
 
-  willInsertElement() {
-    // this.get('filterService').initBlogs();
-  },
-
   actions: {
     selectBlog(blog) {
       if (this.get('blogsArray')
@@ -26,11 +22,22 @@ export default Ember.Component.extend({
       }
       this.sendAction('blogs', this.get('blogsArray'));
     },
+
     deleteBlog(blog) {
       let confirmation = confirm('Are you sure?');
       if (confirmation) {
         this.get('blogService')
             .deleteBlog(blog);
+      }
+    },
+
+    deleteMultiple() {
+      if (this.get('blogsArray').length) {
+        this.get('blogsArray')
+            .forEach((blog) => {
+              this.get('blogService')
+                  .deleteBlog(blog);
+            });
       }
     }
   }

@@ -1,4 +1,5 @@
 import BaseFilter from '../base-filter/component';
+import Ember from 'ember';
 
 export default BaseFilter.extend({
   tagName:       '',
