@@ -1,0 +1,28 @@
+<div class="main-menu">
+  {{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui secondary basic button"}}
+  {{filters/main-filter}}
+
+  <div class="ui right floated main menu">
+
+    {{#has-permission permissionCode='canDeleteAllBlogs'}}
+      <a class="bug popup icon item" href="#" {{action 'toggleMultipleDeletion'}}>
+        <i class="remove icon"></i>
+      </a>
+      {{#if gridService.deleteMultiple}}
+        <a class="bug popup icon item" href="#" {{action 'setBlogs'}}>
+          <i>delete: {{blogsArray.length}} <i class="trash icon"></i></i>
+        </a>
+      {{/if}}
+    {{/has-permission}}
+
+    {{#if gridService.blockView}}
+      <a class="bug popup icon item" href="#" {{action 'setView'}}>
+        <i class="list layout icon"></i>
+      </a>
+    {{else}}
+      <a class="bug popup icon item" href="#" {{action 'setView'}}>
+        <i class="block layout icon"></i>
+      </a>
+    {{/if}}
+  </div>
+</div>
