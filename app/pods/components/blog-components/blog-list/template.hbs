@@ -1,10 +1,10 @@
-<div class="ui {{if gridService.blockView 'block' 'list'}} {{if (hasPermission 'canDeleteAllBlogs')
+<div class="ui {{if blogMenuService.blockView 'block' 'list'}} {{if (hasPermission 'canDeleteAllBlogs')
                                                                 'can-delete-all-blogs'}}">
   {{#each filterService.filteredBlogs as |blog|}}
 
-    {{#if gridService.deleteMultiple}}
+    {{#if blogMenuService.deleteMultiple}}
       <div
-        class="ui card {{if blog.isClicked 'blog-clicked'}} {{if gridService.deleteMultiple
+        class="ui card {{if blog.isClicked 'blog-clicked'}} {{if blogMenuService.deleteMultiple
                                                                  'delete-multiple'}}" {{action 'selectBlog' blog}}>
         <div class="image">
           <img src="{{blog.cover}}">

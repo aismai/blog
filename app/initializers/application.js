@@ -12,10 +12,6 @@ export function initialize(application) {
 
 	application.inject('route', 'userService', 'service:user-service');
 
-  application.inject('route', 'gridService', 'service:grid-service');
-  application.inject('controller', 'gridService', 'service:grid-service');
-	application.inject('component', 'gridService', 'service:grid-service');
-
   application.inject('route', 'filterService', 'service:filter-service');
   application.inject('component', 'filterService', 'service:filter-service');
   application.inject('controller', 'filterService', 'service:filter-service');

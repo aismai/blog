@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   blogService: Ember.inject.service('blog-service'),
-  gridService: Ember.inject.service('grid-service'),
+  blogMenuService: Ember.inject.service('blog-menu-service'),
   tagName:     '',
 
   init() {
@@ -11,14 +11,14 @@ export default Ember.Component.extend({
 
   actions: {
     setView() {
-      this.get('gridService')
+      this.get('blogMenuService')
           .toggleView();
     },
 
     toggleMultipleDeletion() {
-      this.get('gridService')
+      this.get('blogMenuService')
           .toggleDeleteAction();
-      if (!this.get('gridService.deleteMultiple')) {
+      if (!this.get('blogMenuService.deleteMultiple')) {
         this.get('blogService')
             .resetBlogs();
       }

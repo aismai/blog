@@ -8,14 +8,14 @@
       <a class="bug popup icon item" href="#" {{action 'toggleMultipleDeletion'}}>
         <i class="remove icon"></i>
       </a>
-      {{#if gridService.deleteMultiple}}
+      {{#if blogMenuService.deleteMultiple}}
         <a class="bug popup icon item" href="#" {{action 'deleteBlogs'}}>
           <i>delete: {{blogService.multipleDeletionBlogs.length}} <i class="trash icon"></i></i>
         </a>
       {{/if}}
     {{/has-permission}}
 
-    {{#if gridService.blockView}}
+    {{#if blogMenuService.blockView}}
       <a class="bug popup icon item" href="#" {{action 'setView'}}>
         <i class="list layout icon"></i>
       </a>

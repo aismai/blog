@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  blogService: Ember.inject.service('blog-service'),
-  gridService: Ember.inject.service('grid-service'),
+  blogService:     Ember.inject.service('blog-service'),
+  blogMenuService: Ember.inject.service('blog-menu-service'),
 
   init() {
     this._super(...arguments);
