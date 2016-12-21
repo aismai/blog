@@ -239,13 +239,13 @@
   position: relative;
 
   .search-filter {
-    margin-left: 700px;
+    margin-left: 800px;
     position: absolute;
   }
 
   .dropdown-filter {
     width: 200px;
-    margin-left: 490px;
+    margin-left: 590px;
     position: absolute;
     .ember-power-select-trigger.ember-view.ember-basic-dropdown-trigger {
       height: 37px;
@@ -256,7 +256,7 @@
   }
   .user-filter {
     width: 200px;
-    margin-left: 278px;
+    margin-left: 378px;
     position: absolute;
     .ember-power-select-trigger.ember-view.ember-basic-dropdown-trigger {
       height: 37px;
@@ -270,6 +270,11 @@
     .ember-power-select-clear-btn {
       margin-top: 4px;
     }
+  }
+  .date-filter {
+    position: absolute;
+    margin-left: 110px;
+    width: 200px;
   }
 }
 

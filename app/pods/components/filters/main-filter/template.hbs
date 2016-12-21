@@ -1,4 +1,14 @@
 <div class="main-filter">
+
+  <div class="date-filter">
+    <div class="ui calendar" id="example1">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        {{filters/start-date-filter register='registerFilter' runFilter='runFilters'}}
+      </div>
+    </div>
+  </div>
+
   <div class='dropdown-filter'>
     {{filters/category-filter register='registerFilter' runFilter='runFilters'}}
   </div>

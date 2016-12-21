@@ -1,10 +1,10 @@
 <div class="ui {{if blogMenuService.blockView 'block' 'list'}} {{if (hasPermission 'canDeleteAllBlogs')
-                                                                'can-delete-all-blogs'}}">
+                                                                    'can-delete-all-blogs'}}">
   {{#each filterService.filteredBlogs as |blog|}}
 
     {{#if blogMenuService.deleteMultiple}}
       <div
-        class="ui card {{if blog.isClicked 'blog-clicked'}} {{if blogMenuService.deleteMultiple
+        class="ui card {{if blog.isClicked 'blog-clicked'}} {{if gridService.deleteMultiple
                                                                  'delete-multiple'}}" {{action 'selectBlog' blog}}>
         <div class="image">
           <img src="{{blog.cover}}">
@@ -42,30 +42,29 @@
               {{/if}}
             {{/if}}
           </span>
-          {{#link-to 'posts' blog.id}}
-            <i class="file icon"></i>
-            {{blog.posts.length}}
-          {{/link-to}}
+
+          <i class="calendar icon"></i>
+          {{blog.dateOfCreation}}
         </div>
       </div>
 
     {{else}}
       {{#link-to 'posts' blog.id}}
-      <div
-        class="ui card">
-        <div class="image">
-          <img src="{{blog.cover}}">
-        </div>
-        <div class="content blog-content">
-          <a class="header">{{link-to blog.name 'posts' blog.id}}</a>
-          <div class="meta">
-            <span class="date">category: {{blog.blogType.name}}</span>
+        <div
+          class="ui card">
+          <div class="image">
+            <img src="{{blog.cover}}">
           </div>
-          <div class="description">
-            {{blog.description}}
+          <div class="content blog-content">
+            <a class="header">{{link-to blog.name 'posts' blog.id}}</a>
+            <div class="meta">
+              <span class="date">category: {{blog.blogType.name}}</span>
+            </div>
+            <div class="description">
+              {{blog.description}}
+            </div>
           </div>
-        </div>
-        <div class="extra content">
+          <div class="extra content">
           <span class="right floated">
             {{#if (hasPermission 'canDeleteAllBlogs' 'canEditAllBLogs')}}
               {{#has-permission  permissionCode='canEditAllBlogs'}}
@@ -89,12 +88,10 @@
               {{/if}}
             {{/if}}
           </span>
-          {{#link-to 'posts' blog.id}}
-            <i class="file icon"></i>
-            {{blog.posts.length}}
-          {{/link-to}}
+            <i class="calendar icon"></i>
+            {{blog.dateOfCreation}}
+          </div>
         </div>
-      </div>
       {{/link-to}}
     {{/if}}
   {{/each}}
