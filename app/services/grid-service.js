@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  blockView: true,
+  blockView:      true,
   deleteMultiple: false,
 
   toggleView() {
@@ -11,6 +11,4 @@ export default Ember.Service.extend({
   toggleDeleteAction() {
     this.toggleProperty('deleteMultiple');
   }
-
-
 });

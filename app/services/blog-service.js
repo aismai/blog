@@ -6,6 +6,8 @@ export default Ember.Service.extend({
   userService: Ember.inject.service('user-service'),
   store:       Ember.inject.service(),
 
+  multipleDeletionBlogs: [],
+
   blogAddObject(blog, object) {
     const modelName = BlogConst[object.get('constructor.modelName')];
     blog.get(modelName)
@@ -30,5 +32,13 @@ export default Ember.Service.extend({
                 );
           }
         );
+  },
+
+  resetBlogs() {
+    this.get('multipleDeletionBlogs')
+        .forEach((blog) => {
+          blog.set('isClicked', false);
+        });
+    this.set('multipleDeletionBlogs', []);
   }
 });

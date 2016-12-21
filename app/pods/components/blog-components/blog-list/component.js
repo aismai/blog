@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  filteredBlogs: undefined,
-  blogsArray: [],
+  blogService: Ember.inject.service('blog-service'),
+  gridService: Ember.inject.service('grid-service'),
 
   init() {
     this._super(...arguments);
@@ -10,17 +10,16 @@ export default Ember.Component.extend({
 
   actions: {
     selectBlog(blog) {
-      if (this.get('blogsArray')
+      if (this.get('blogService.multipleDeletionBlogs')
               .includes(blog)) {
-        this.get('blogsArray')
+        this.get('blogService.multipleDeletionBlogs')
             .removeObject(blog);
         blog.set('isClicked', false);
       } else {
         blog.set('isClicked', true);
-        this.get('blogsArray')
-            .push(blog);
+        this.get('blogService.multipleDeletionBlogs')
+            .pushObject(blog);
       }
-      this.sendAction('blogs', this.get('blogsArray'));
     },
 
     deleteBlog(blog) {
@@ -28,16 +27,6 @@ export default Ember.Component.extend({
       if (confirmation) {
         this.get('blogService')
             .deleteBlog(blog);
-      }
-    },
-
-    deleteMultiple() {
-      if (this.get('blogsArray').length) {
-        this.get('blogsArray')
-            .forEach((blog) => {
-              this.get('blogService')
-                  .deleteBlog(blog);
-            });
       }
     }
   }
