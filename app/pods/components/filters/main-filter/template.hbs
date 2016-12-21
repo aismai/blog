@@ -1,10 +1,19 @@
 <div class="main-filter">
 
   <div class="date-filter">
-    <div class="ui calendar" id="example1">
+    <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
         {{filters/start-date-filter register='registerFilter' runFilter='runFilters'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="end-date-filter">
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        {{filters/end-date-filter register='registerFilter' runFilter='runFilters'}}
       </div>
     </div>
   </div>

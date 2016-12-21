@@ -273,11 +273,19 @@
   }
   .date-filter {
     position: absolute;
-    margin-left: 110px;
+    margin-left: 410px;
     width: 200px;
   }
+
+  .end-date-filter {
+    position: absolute;
+    width: 200px;
+    margin-left: 100px;
+  }
+
+
 }
 
 .delete-multiple {
-  box-shadow: 0 1px 10px 0 #009fe2, 0 0 0 0 !important;
+  box-shadow: 0 0 15px 0 #0088c2, 0 0 0 0 !important;
 }
