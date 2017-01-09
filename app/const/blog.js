@@ -1,6 +1,6 @@
 const relations = {
-  user: 'user',
-  post: 'posts',
+  user:    'user',
+  post:    'posts',
   comment: 'comments',
 };
 

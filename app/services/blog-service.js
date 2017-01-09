@@ -5,6 +5,7 @@ export default Ember.Service.extend({
   postService: Ember.inject.service('post-service'),
   userService: Ember.inject.service('user-service'),
   store:       Ember.inject.service(),
+  routing:     Ember.inject.service('-routing'),
 
   multipleDeletionBlogs: [],
 
@@ -13,6 +14,21 @@ export default Ember.Service.extend({
     blog.get(modelName)
         .pushObject(object);
     return blog.save();
+  },
+
+  saveBlog(blog) {
+    blog.save()
+        .then((savedBlog) => {
+          savedBlog.get('user')
+                   .then((user) => {
+                     this.get('userService')
+                         .userAddObject(user, savedBlog)
+                         .then(() => {
+                           this.get("routing")
+                               .transitionTo('blogs');
+                         });
+                   });
+        });
   },
 
   deleteBlog(blog) {
