@@ -4,6 +4,7 @@ import Ember from 'ember';
 export default AuthenticatedRoute.extend({
 
   blogService: Ember.inject.service('blog-service'),
+  activityService: Ember.inject.service('activity-service'),
 
   actions: {
     save(blog) {
