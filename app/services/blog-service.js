@@ -2,10 +2,11 @@ import Ember from 'ember';
 import BlogConst from '../const/blog';
 
 export default Ember.Service.extend({
-  postService: Ember.inject.service('post-service'),
-  userService: Ember.inject.service('user-service'),
-  store:       Ember.inject.service(),
-  routing:     Ember.inject.service('-routing'),
+  postService:     Ember.inject.service('post-service'),
+  userService:     Ember.inject.service('user-service'),
+  activityService: Ember.inject.service('activity-service'),
+  store:           Ember.inject.service(),
+  routing:         Ember.inject.service('-routing'),
 
   multipleDeletionBlogs: [],
 
@@ -44,6 +45,7 @@ export default Ember.Service.extend({
                 .removeObject(user, blog)
                 .then(() => {
                     blog.destroyRecord({adapterOptions: {flashMessage: true}});
+                    this.get('activityService').createActivity('blog-delete');
                   }
                 );
           }

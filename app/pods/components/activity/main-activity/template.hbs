@@ -2,6 +2,6 @@
 
 <ul>
   {{#each activityService.activities as |activity|}}
-    <li>{{activity.createdFormatted}} > {{activity.type}}, by: {{activity.user.email}}</li>
+    <li>{{activity/activity-name item=activity}}</li>
   {{/each}}
 </ul>
