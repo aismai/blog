@@ -1,0 +1,7 @@
+<h1>mAin ActiVitY</h1>
+
+<ul>
+  {{#each activityService.activities as |activity|}}
+    <li>{{activity.createdFormatted}} > {{activity.type}}, by: {{activity.user.email}}</li>
+  {{/each}}
+</ul>

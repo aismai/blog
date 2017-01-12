@@ -10,6 +10,7 @@ export default AuthenticatedRoute.extend({
     save(blog) {
       this.get('blogService')
           .saveBlog(blog);
+      this.get('activityService').createActivity('blog-create');
     }
   }
 });

@@ -2,7 +2,7 @@ import AuthenticatedRoute from '../../athenticated-route/route';
 import Ember from 'ember';
 
 export default AuthenticatedRoute.extend({
-
+  activityService: Ember.inject.service('activity-service'),
   hasPermission: Ember.computed(
     'authService.currentPermissions',
     function () {
@@ -28,6 +28,7 @@ export default AuthenticatedRoute.extend({
     save(blog) {
       blog.save({ adapterOptions: { flashMessage: true } })
         .then(() => {
+          this.get('activityService').createActivity('blog-edit');
           this.transitionTo('blogs');
         });
     },
