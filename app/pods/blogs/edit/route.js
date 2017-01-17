@@ -28,7 +28,7 @@ export default AuthenticatedRoute.extend({
     save(blog) {
       blog.save({ adapterOptions: { flashMessage: true } })
         .then(() => {
-          this.get('activityService').createActivity('blog-edit');
+          this.get('activityService').createActivity('blog-edit', blog);
           this.transitionTo('blogs');
         });
     },

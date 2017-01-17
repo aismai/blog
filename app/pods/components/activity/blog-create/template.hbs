@@ -1,4 +1,7 @@
 <div class="blog-create-component">
-  {{item.createdFormatted}}, <span class="blog-create">{{item.type}}, by {{item.user.email}}</span>
+  <b>{{item.createdFormatted}}</b>,
+  <span class="blog-create">user: {{link-to item.user.email 'users.show' item.user.id}}
+    , created new {{item.typeModel.type}}
+    with title: {{item.typeModel.title}}
+  </span>
 </div>
-

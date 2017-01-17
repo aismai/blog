@@ -44,8 +44,8 @@ export default Ember.Service.extend({
             this.get('userService')
                 .removeObject(user, blog)
                 .then(() => {
+                    this.get('activityService').createActivity('blog-delete', blog);
                     blog.destroyRecord({adapterOptions: {flashMessage: true}});
-                    this.get('activityService').createActivity('blog-delete');
                   }
                 );
           }

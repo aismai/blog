@@ -1,3 +1,5 @@
 <div class="blog-delete-component">
-  {{item.createdFormatted}}, <span class="blog-delete">{{item.type}}, by {{item.user.email}}</span>
+  <b>{{item.createdFormatted}}</b>, <span class="blog-delete">
+  user: {{link-to item.user.email 'users.show' item.user.id}}
+  , deleted {{item.typeModel.type}} with id: {{item.typeModel.id}}</span>
 </div>
