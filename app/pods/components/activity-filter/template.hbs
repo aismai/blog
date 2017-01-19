@@ -1,0 +1,8 @@
+<p>Filter activity by: </p>
+{{#each filters as |filter|}}
+  <div>
+    {{one-way-checkbox checked=filter.isActive update=(action 'toggleFilter' filter)}}
+    <label for={{filter.name}}>{{filter.name}}</label>
+  </div>
+{{/each}}
+

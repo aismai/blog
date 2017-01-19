@@ -1,5 +1,5 @@
 <div class="blog-create-component">
-  <b>{{item.createdFormatted}}</b>,
+  <b>{{moment-format item.created  'D MMMM YYYY, HH:mm'}}</b>,
   <span class="blog-create">user: {{link-to item.user.email 'users.show' item.user.id}}
     , created new {{item.typeModel.type}}
     with title: {{item.typeModel.title}}
