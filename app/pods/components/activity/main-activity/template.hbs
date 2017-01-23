@@ -1,8 +1,10 @@
 <h1>mAin ActiVitY</h1>
 
-{{activity-filter}}
+{{activity-filter mainFilterActivities=activities filteredActivities='filteredActivities'}}
+
 <ul>
-  {{#each activityService.filteredActivities as |activity|}}
+  {{#each activities as |activity|}}
     <li>{{activity/activity-name item=activity}}</li>
   {{/each}}
 </ul>
+

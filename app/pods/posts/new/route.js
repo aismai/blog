@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default AuthenticatedRoute.extend({
   userService: Ember.inject.service(),
   postService: Ember.inject.service(),
+  activityService: Ember.inject.service('activity-service'),
 
   model() {
     const blog = this.modelFor('blogs.show');
@@ -19,6 +20,7 @@ export default AuthenticatedRoute.extend({
   actions: {
     save(post) {
       this.get('postService').savePost(post);
+      this.get('activityService').createActivity('post-create', post);
     },
 
     willTransition() {

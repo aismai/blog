@@ -11,7 +11,7 @@ const filters = [
   },
   {
     name:  'comment',
-    isActive: true,
+    isActive: false,
     types: ['comment-create', 'comment-edit', 'comment-delete']
   }
 ];

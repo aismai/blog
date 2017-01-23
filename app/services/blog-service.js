@@ -20,16 +20,19 @@ export default Ember.Service.extend({
   saveBlog(blog) {
     blog.save()
         .then((savedBlog) => {
-          savedBlog.get('user')
-                   .then((user) => {
-                     this.get('userService')
-                         .userAddObject(user, savedBlog)
-                         .then(() => {
-                           this.get("routing")
-                               .transitionTo('blogs');
-                         });
-                   });
-        });
+            savedBlog.get('user')
+                     .then((user) => {
+                         this.get('userService')
+                             .userAddObject(user, savedBlog)
+                             .then(() => {
+                                 this.get("routing")
+                                     .transitionTo('blogs');
+                               }
+                             );
+                       }
+                     );
+          }
+        );
   },
 
   deleteBlog(blog) {
@@ -44,7 +47,8 @@ export default Ember.Service.extend({
             this.get('userService')
                 .removeObject(user, blog)
                 .then(() => {
-                    this.get('activityService').createActivity('blog-delete', blog);
+                    this.get('activityService')
+                        .createActivity('blog-delete', blog);
                     blog.destroyRecord({adapterOptions: {flashMessage: true}});
                   }
                 );
