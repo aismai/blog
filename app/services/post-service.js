@@ -2,10 +2,11 @@ import Ember from 'ember';
 import PostConst from '../const/post';
 
 export default Ember.Service.extend({
-  commentService: Ember.inject.service('comment-service'),
-  userService:    Ember.inject.service('user-service'),
-  blogService:    Ember.inject.service('blog-service'),
-  routing:        Ember.inject.service('-routing'),
+  commentService:  Ember.inject.service('comment-service'),
+  activityService: Ember.inject.service('activity-service'),
+  userService:     Ember.inject.service('user-service'),
+  blogService:     Ember.inject.service('blog-service'),
+  routing:         Ember.inject.service('-routing'),
 
   postAddObject(post, object) {
     const modelName = PostConst[object.get('constructor.modelName')];
@@ -44,6 +45,8 @@ export default Ember.Service.extend({
                 .removeObject(post);
             blog.save()
                 .then(() => {
+                  this.get('activityService')
+                      .createActivity('post-delete', post);
                     post.destroyRecord({adapterOptions: {flashMessage: true}});
                   }
                 );
