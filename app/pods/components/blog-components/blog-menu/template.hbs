@@ -1,8 +1,8 @@
 <div class="main-menu">
-  {{link-to 'new Blog' 'blogs.new' id="new-blog-button" class="ui secondary basic button"}}
-  {{filters/main-filter}}
-
-  <div class="ui right floated main menu">
+  <div class="ui left floated main menu">
+    {{#link-to 'blogs.new' class="bug popup icon item"}}
+      <i class="plus icon"></i>
+    {{/link-to}}
     {{#has-permission permissionCode='canDeleteAllBlogs'}}
       <a class="bug popup icon item" href="#" {{action 'toggleMultipleDeletion'}}>
         <i class="remove icon"></i>
@@ -13,7 +13,6 @@
         </a>
       {{/if}}
     {{/has-permission}}
-
     {{#if blogMenuService.blockView}}
       <a class="bug popup icon item" href="#" {{action 'setView'}}>
         <i class="list layout icon"></i>
@@ -24,4 +23,5 @@
       </a>
     {{/if}}
   </div>
+  {{filters/main-filter}}
 </div>

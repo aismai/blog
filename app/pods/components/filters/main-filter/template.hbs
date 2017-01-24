@@ -1,6 +1,8 @@
 <div class="main-filter">
-
-  <div class="date-filter">
+  <div class='filter search-filter'>
+    {{filters/search-filter register='registerFilter' runFilter='runFilters'}}
+  </div>
+  <div class="filter date-filter">
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
@@ -8,8 +10,7 @@
       </div>
     </div>
   </div>
-
-  <div class="end-date-filter">
+  <div class="filter end-date-filter">
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
@@ -17,14 +18,10 @@
       </div>
     </div>
   </div>
-
-  <div class='dropdown-filter'>
+  <div class='filter category-filter'>
     {{filters/category-filter register='registerFilter' runFilter='runFilters'}}
   </div>
-  <div class="user-filter">
+  <div class="filter user-filter">
     {{filters/user-filter register='registerFilter' runFilter='runFilters'}}
-  </div>
-  <div class='search-filter'>
-    {{filters/search-filter register='registerFilter' runFilter='runFilters'}}
   </div>
 </div>

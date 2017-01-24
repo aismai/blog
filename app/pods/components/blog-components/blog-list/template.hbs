@@ -1,28 +1,26 @@
-<div class="ui {{if blogMenuService.blockView 'block' 'list'}} {{if (hasPermission 'canDeleteAllBlogs')
-                                                                    'can-delete-all-blogs'}}">
-  {{#each filterService.filteredBlogs as |blog|}}
+<div class="blogs {{if blogMenuService.blockView 'block' 'list'}}
+  {{if (hasPermission 'canDeleteAllBlogs') 'can-delete-all-blogs'}}">
 
+  {{#each filterService.filteredBlogs as |blog|}}
     {{#if blogMenuService.deleteMultiple}}
-      <div
-        class="ui card {{if blog.isClicked 'blog-clicked'}} {{if blogMenuService.deleteMultiple
-                                                                 'delete-multiple'}}" {{action 'selectBlog' blog}}>
-        <div class="image">
+      <div class="blog {{if blog.isClicked 'blog-clicked'}}
+          {{if blogMenuService.deleteMultiple 'delete-multiple'}}"
+        {{action 'selectBlog' blog}}>
+        <div class="blog-cover">
           <img src="{{blog.cover}}">
         </div>
-        <div class="content blog-content">
-          <a class="header">{{link-to blog.name 'posts' blog.id}}</a>
-          <div class="meta">
-            <span class="date">category: {{blog.blogType.name}}</span>
+        <div class="blog-content">
+          <a class="blog-title">{{link-to blog.name 'posts' blog.id}}</a>
+          <div class="blog-category">
+            <span class="">category: {{blog.blogType.name}}</span>
           </div>
-          <div class="meta">
-            <span class="date">user: {{blog.user.email}}</span>
-          </div>
-          <div class="description">
-            {{blog.description}}
+          <div class="blog-user">
+            <span class="">user: {{blog.user.email}}</span>
           </div>
         </div>
-        <div class="extra content">
-          <span class="right floated">
+
+        <div class="blog-footer">
+          <span class="blog-actions">
             {{#if (hasPermission 'canDeleteAllBlogs' 'canEditAllBLogs')}}
               {{#has-permission  permissionCode='canEditAllBlogs'}}
                 {{#link-to 'blogs.edit' blog.id}}
@@ -45,33 +43,30 @@
               {{/if}}
             {{/if}}
           </span>
-
-          <i class="calendar icon"></i>
-          {{blog.dateOfCreation}}
+          <div class="blog-date">
+            <i class="calendar icon"></i>
+            {{moment-format blog.created  'D MMMM YYYY'}}
+          </div>
         </div>
       </div>
-
     {{else}}
       {{#link-to 'posts' blog.id}}
-        <div
-          class="ui card">
-          <div class="image">
+        <div class="blog">
+          <div class="blog-cover">
             <img src="{{blog.cover}}">
           </div>
-          <div class="content blog-content">
-            <a class="header">{{link-to blog.name 'posts' blog.id}}</a>
-            <div class="meta">
-              <span class="date">category: {{blog.blogType.name}}</span>
+          <div class="blog-content">
+            <a class="blog-title">{{link-to blog.name 'posts' blog.id}}</a>
+            <div class="blog-category">
+              <span class="">category: {{blog.blogType.name}}</span>
             </div>
-            <div class="meta">
-              <span class="date">user: {{blog.user.email}}</span>
-            </div>
-            <div class="description">
-              {{blog.description}}
+            <div class="blog-user">
+              <span class="">user: {{blog.user.email}}</span>
             </div>
           </div>
-          <div class="extra content">
-          <span class="right floated">
+
+          <div class="blog-footer">
+          <span class="blog-actions">
             {{#if (hasPermission 'canDeleteAllBlogs' 'canEditAllBLogs')}}
               {{#has-permission  permissionCode='canEditAllBlogs'}}
                 {{#link-to 'blogs.edit' blog.id}}
@@ -94,8 +89,10 @@
               {{/if}}
             {{/if}}
           </span>
-            <i class="calendar icon"></i>
-            {{blog.dateOfCreation}}
+            <div class="blog-date">
+              <i class="calendar icon"></i>
+              {{moment-format blog.created  'D MMMM YYYY'}}
+            </div>
           </div>
         </div>
       {{/link-to}}
