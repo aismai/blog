@@ -1,13 +1,12 @@
-import Ember from 'ember';
+import AuthenticatedRoute from '../../athenticated-route/route';
 
-export default Ember.Route.extend({
+export default AuthenticatedRoute.extend({
   model() {
     return this.store.findAll('role');
   },
 
   actions: {
     deleteRole(role) {
-      // TODO: if user has no roles? .includes throws error
       const usersPromise = this.store.findAll('user');
       console.log(role.get('id'));
       usersPromise.then((users) => {

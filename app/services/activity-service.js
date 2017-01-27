@@ -14,10 +14,6 @@ export default Ember.Service.extend({
 
   createActivity(type, activityObject) {
     const activityObjectName = activityObject.constructor.modelName;
-    // console.log(activityObjectName);
-    // console.log((objectFields[activityObject.constructor.modelName]));
-
-    // return;
     const objectModel        = {
       type:  activityObjectName.capitalize(),
       id:    activityObject.get('id'),

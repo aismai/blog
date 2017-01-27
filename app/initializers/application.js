@@ -3,7 +3,6 @@ export function initialize(application) {
   application.inject('component', 'authService', 'service:auth-service');
   application.inject('controller', 'authService', 'service:auth-service');
   application.inject('model', 'authService', 'service:auth-service');
-  application.inject('helper', 'authService', 'service:auth-service');
 
   application.inject('route', 'commentService', 'service:comment-service');
   application.inject('route', 'postService', 'service:post-service');
@@ -15,7 +14,6 @@ export function initialize(application) {
   application.inject('route', 'filterService', 'service:filter-service');
   application.inject('component', 'filterService', 'service:filter-service');
   application.inject('controller', 'filterService', 'service:filter-service');
-
 
 }
 

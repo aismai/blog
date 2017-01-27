@@ -5,9 +5,17 @@ export default Ember.Service.extend({
   currentUser:        Ember.Object.create(),
   currentPermissions: [],
 
-  isAuthenticated: Ember.computed('currentUser.id', function () {
-    return !!this.get('currentUser.id');
-  }),
+  isAuthenticated: Ember.computed('currentUser.id',
+    function () {
+      return !!this.get('currentUser.id');
+    }
+  ),
+
+  isAdmin: Ember.computed('currentUser.role.name',
+    function () {
+      return this.get('currentUser.role.name') == 'admin';
+    }
+  ),
 
   setLastLoginDate(user) {
     user.set('login', new Date());
@@ -42,9 +50,10 @@ export default Ember.Service.extend({
 
   initializeCurrentUser(user) {
     this.setCurrentUser(user);
-    return this.setLastLoginDate(user).then(() => {
-      return this.initializeUserPermissions(user);
-    });
+    return this.setLastLoginDate(user)
+               .then(() => {
+                 return this.initializeUserPermissions(user);
+               });
   }
 
 });

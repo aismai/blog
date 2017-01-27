@@ -25,12 +25,10 @@
   </tbody>
 </table>
 
+{{#if authService.isAdmin}}
+  <div class="activity">
+    <h3>user activities:</h3>
+    {{activity/main-activity}}
+  </div>
+{{/if}}
 
-<div class="activity">
-  <h3>user activities:</h3>
-  {{activity/main-activity}}
-
-  {{!#activity/main-activity as |mainActivity|}}
-    {{!activity-filter targetObject=mainActivity filteredActivities='filteredActivities' mainFilterActivities=activities }}
-  {{!/activity/main-activity}}
-</div>

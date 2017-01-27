@@ -1,4 +1,10 @@
-  {{link-to 'leave comment:' 'comments.new' model.id class="button"}}
+<div class="main-menu">
+  <div class="ui left floated main menu">
+    {{#link-to 'comments.new' class="bug popup icon item"}}
+      <i class="plus icon"></i>
+    {{/link-to}}
+  </div>
+</div>
 
   <div class="ui comments">
     <h3 class="ui dividing header">Comments</h3>

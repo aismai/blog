@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  authService: Ember.inject.service('auth-service'),
 
   actions: {
     login(userParams) {

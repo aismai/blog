@@ -1,8 +1,8 @@
 {{#if model.isAuthor}}
-  <div id="new-post">
-    <div class="ui black secondary basic icon button">
-      {{#link-to 'posts.new' model}}
-        <i class="write icon"></i>new post
+  <div class="main-menu">
+    <div class="ui left floated main menu">
+      {{#link-to 'posts.new' class="bug popup icon item"}}
+        <i class="plus icon"></i>
       {{/link-to}}
     </div>
   </div>
