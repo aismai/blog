@@ -5,8 +5,8 @@ import moment from 'moment';
 export default DS.Model.extend({
   type:    DS.attr('string'),
   user:    DS.belongsTo('user'),
-  typeModel: DS.attr(),
-  created: DS.attr(
+  contentObject: DS.attr(),
+  createdAt: DS.attr(
     'date', {
       defaultValue() {
         return new Date();
@@ -14,7 +14,7 @@ export default DS.Model.extend({
     }
   ),
 
-  createdFormatted: Ember.computed(
+  createdAtFormatted: Ember.computed(
     'created',
     function () {
       return moment(this.get('created'))

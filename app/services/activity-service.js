@@ -14,7 +14,7 @@ export default Ember.Service.extend({
 
   createActivity(type, activityObject) {
     const activityObjectName = activityObject.constructor.modelName;
-    const objectModel        = {
+    const activityContentObject        = {
       type:  activityObjectName.capitalize(),
       id:    activityObject.get('id'),
       title: activityObject.get(objectFields[activityObjectName])
@@ -24,7 +24,7 @@ export default Ember.Service.extend({
                             .createRecord('activity', {
                                 type:      type,
                                 user:      this.get('authService.currentUser'),
-                                typeModel: objectModel
+                                contentObject: activityContentObject
                               }
                             );
     //todo: remove flash message popup, when new activity created
