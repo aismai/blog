@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  userService: Ember.inject.service(),
+  userService:     Ember.inject.service(),
+  activityService: Ember.inject.service(),
 
   deleteComment(comment) {
     const user = comment.get('user');
@@ -13,6 +14,8 @@ export default Ember.Service.extend({
               .removeObject(comment);
           post.save()
               .then(() => {
+                this.get('activityService')
+                    .createActivity('comment-delete', comment);
                 comment.destroyRecord({adapterOptions: {flashMessage: true}});
               });
         });

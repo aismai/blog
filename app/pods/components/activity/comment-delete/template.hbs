@@ -1,0 +1,5 @@
+<div class="blog-delete-component">
+  <b>{{moment-format item.created  'D MMMM YYYY, HH:mm'}}</b>, <span class="blog-delete">
+  user: {{link-to item.user.email 'users.show' item.user.id}}
+  , deleted {{item.typeModel.type}} with id: {{item.typeModel.id}}</span>
+</div>

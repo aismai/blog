@@ -7,21 +7,21 @@ export default Ember.Service.extend({
   activities:         undefined,
   filteredActivities: undefined,
 
-  testing: 'some string',
-
   init() {
     this._super(...arguments);
   },
 
-  //todo: remove flash message popup, when new activity created
-  createActivity(type, activityObject) {
-    console.log(this.get('testing'));
 
-    const activityObjectName = activityObject.constructor.modelName.capitalize();
+  createActivity(type, activityObject) {
+    const activityObjectName = activityObject.constructor.modelName;
+    // console.log(activityObjectName);
+    // console.log((objectFields[activityObject.constructor.modelName]));
+
+    // return;
     const objectModel        = {
-      type:  activityObjectName,
+      type:  activityObjectName.capitalize(),
       id:    activityObject.get('id'),
-      title: activityObject.get(objectFields[activityObject.constructor.modelName])
+      title: activityObject.get(objectFields[activityObjectName])
     };
 
     const newActivity = this.get('store')
@@ -31,6 +31,7 @@ export default Ember.Service.extend({
                                 typeModel: objectModel
                               }
                             );
+    //todo: remove flash message popup, when new activity created
     // { adapterOptions: { flashMessage: false } - is not working...
     newActivity.save({adapterOptions: {flashMessage: false}});
   }

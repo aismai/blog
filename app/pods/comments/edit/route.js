@@ -1,6 +1,8 @@
 import AuthenticatedRoute from '../../athenticated-route/route';
-
+import Ember from 'ember';
 export default AuthenticatedRoute.extend({
+  activityService: Ember.inject.service('activity-service'),
+
   model(param) {
     const commentPromise = this.store.findRecord('comment', param.comment_id);
     commentPromise.then((comment) => {
@@ -15,6 +17,8 @@ export default AuthenticatedRoute.extend({
     save(comment) {
       comment.save({ adapterOptions: { flashMessage: true } })
         .then(() => {
+          this.get('activityService')
+              .createActivity('comment-edit', comment);
           this.transitionTo('comments');
         });
     },

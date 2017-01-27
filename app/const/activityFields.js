@@ -1,7 +1,7 @@
 const fields = {
   blog: 'name',
   post: 'title',
-  commment: 'body'
+  comment: 'body'
 };
 
 export default fields;
