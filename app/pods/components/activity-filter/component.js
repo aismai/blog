@@ -34,13 +34,23 @@ export default Ember.Component.extend({
   },
 
   runFilter() {
-    const filteredActivities = this.get('activities')
-                                   .filter((activity) => {
-                                       return this.get('currentFilters')
-                                                  .includes(activity.get('type'));
-                                     }
-                                   );
-    this.sendAction('filteredActivities', filteredActivities);
+    let ObjectPromiseProxy = Ember.ObjectProxy.extend(Ember.PromiseProxyMixin);
+
+    const activities = ObjectPromiseProxy.create({
+        promise: new Promise((resolve) => {
+            Ember.run.later(() => {
+              resolve(this.get('activities')
+                          .filter((activity) => {
+                            return this.get('currentFilters')
+                                       .includes(activity.get('type'));
+                          })
+              );
+            }, 1000);
+          }
+        )
+      }
+    );
+    this.sendAction('filterActivities', activities);
   },
 
   actions: {

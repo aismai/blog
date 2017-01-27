@@ -7,12 +7,16 @@ export default Ember.Service.extend({
   activities:         undefined,
   filteredActivities: undefined,
 
+  testing: 'some string',
+
   init() {
     this._super(...arguments);
   },
 
   //todo: remove flash message popup, when new activity created
   createActivity(type, activityObject) {
+    console.log(this.get('testing'));
+
     const activityObjectName = activityObject.constructor.modelName.capitalize();
     const objectModel        = {
       type:  activityObjectName,
@@ -27,7 +31,7 @@ export default Ember.Service.extend({
                                 typeModel: objectModel
                               }
                             );
-    // { adapterOptions: { flashMessage: false } - not working...
+    // { adapterOptions: { flashMessage: false } - is not working...
     newActivity.save({adapterOptions: {flashMessage: false}});
   }
 });

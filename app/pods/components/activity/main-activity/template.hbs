@@ -1,10 +1,15 @@
-<h1>mAin ActiVitY</h1>
+<h1>Main Activity</h1>
+{{activity-filter mainFilterActivities=activities filterActivities='filterActivities'}}
 
-{{activity-filter mainFilterActivities=activities filteredActivities='filteredActivities'}}
+{{#if activities.isPending}}
+  <div class="ui active inline loader"></div>
+{{else}}
+  <ul>
+    {{#each activities.content as |activity|}}
+      <li>{{activity/activity-name item=activity}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
 
-<ul>
-  {{#each activities as |activity|}}
-    <li>{{activity/activity-name item=activity}}</li>
-  {{/each}}
-</ul>
+
 
