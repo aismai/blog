@@ -1,7 +1,14 @@
-<div class="blog-create-component">
-  <b>{{moment-format item.createdAt  'D MMMM YYYY, HH:mm'}}</b>,
-  <span class="blog-create">user: {{link-to item.user.email 'users.show' item.user.id}}
-    , created new {{item.contentObject.type}}
-    with title: {{item.contentObject.title}} !!
-  </span>
+<div class="activity type-create">
+  <div class="user-avatar">
+    <img src="/assets/images/sanctum_sanctorum.jpg" alt="user-avatar">
+  </div>
+  <p>
+    {{link-to item.user.email 'users.show' item.user.id}}
+    <span class="activity-date">{{moment-from-now item.createdAt  'D MMMM YYYY, HH:mm'}}</span>
+  </p>
+  <p>
+    <span class="activity-description">
+      Created new {{item.contentObject.type}} with title: {{item.contentObject.title}}
+    </span>
+  </p>
 </div>

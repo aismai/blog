@@ -1,6 +1,14 @@
-<div class="blog-edit-component">
-  <b>{{moment-format item.created  'D MMMM YYYY, HH:mm'}}</b>,
-  <span class="blog-edit"> user: {{link-to item.user.email 'users.show' item.user.id}}
-    , edited {{item.contentObject.type}} with id: {{item.contentObject.id}}
-  </span>
+<div class="activity type-edit">
+  <div class="user-avatar">
+    <img src="/assets/images/sanctum_sanctorum.jpg" alt="user-avatar">
+  </div>
+  <p>
+    {{link-to item.user.email 'users.show' item.user.id}}
+    <span class="activity-date">{{moment-from-now item.createdAt  'D MMMM YYYY, HH:mm'}}</span>
+  </p>
+  <p>
+    <span class="activity-description">
+      Edited {{item.contentObject.type}} with id: {{item.contentObject.id}}
+    </span>
+  </p>
 </div>

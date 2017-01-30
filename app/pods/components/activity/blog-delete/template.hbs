@@ -1,5 +1,14 @@
-<div class="blog-delete-component">
-  <b>{{moment-format item.created  'D MMMM YYYY, HH:mm'}}</b>, <span class="blog-delete">
-  user: {{link-to item.user.email 'users.show' item.user.id}}
-  , deleted {{item.contentObject.type}} with id: {{item.contentObject.id}}</span>
+<div class="activity type-delete">
+  <div class="user-avatar">
+    <img src="/assets/images/sanctum_sanctorum.jpg" alt="user-avatar">
+  </div>
+  <p>
+    {{link-to item.user.email 'users.show' item.user.id}}
+    <span class="activity-date">{{moment-from-now item.createdAt  'D MMMM YYYY, HH:mm'}}</span>
+  </p>
+  <p>
+    <span class="activity-description">
+      Edited {{item.contentObject.type}} with id: {{item.contentObject.title}}
+    </span>
+  </p>
 </div>

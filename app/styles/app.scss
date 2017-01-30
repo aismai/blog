@@ -73,7 +73,7 @@
     border: 1px solid rgba(0, 0, 0, 0.4);
     color: #000;
     border-radius: 5px;
-    margin: 0 0 10px;
+    margin: 0 44px 10px 0;
   }
   .blog-cover {
     width: 300px;
@@ -129,7 +129,6 @@
   .blog {
     border: 1px solid rgba(0, 0, 0, 0.4);
     color: #000;
-    //border-radius: 5px;
     margin: 0 0 10px;
   }
   .blog-cover {
@@ -223,13 +222,114 @@
 .delete-multiple {
   box-shadow: 0 0 15px 0 #0088c2, 0 0 0 0 !important;
 }
-.blog-create {
-  color: #5fc298;
+
+.post {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  //padding: 0 0 50px 0;
+  margin: 0 0 30px 0;
 }
-.blog-edit {
-  color: #ffa500;
+.post a{
+  color: #000;
 }
 
-.blog-delete {
+.post-image {
+  width: 120px;
+  height: 120px;
+  float: left;
+}
+.post-image img {
+  width: 100%;
+  height: auto;
+}
+.post-content {
+  height: 120px;
+  padding: 10px 0 10px 15px;
+  color: #575757;
+}
+.post-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.post-description {
+  height: 64px;
+  overflow: hidden;
+  padding: 0 0 10px 0;
+}
+.post-comments{
+  display: block;
+  float: left;
+}
+.post-actions {
+  float: right;
+  padding: 0 20px 0 0;
+}
+
+.comment-actions {
+  position: absolute;
+  left: 350px;
+}
+.comment-actions a {
+  color: rgba(0, 0, 0, 0.4);
+}
+.comment-actions span {
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.activity-checkbox {
+  margin: 0 30px 50px 0;
+}
+
+.activity-edit {
+  color: #ffa500;
+}
+.activity-delete {
   color: #a70021;
+}
+.activities li {
+  list-style: none;
+}
+
+.activity {
+  height: 60px;
+  width: auto;
+  margin: 0 0 10px 0;
+}
+.activity.type-create {
+  color: #0088c2;
+}
+.activity.type-create a{
+  color: #0088c2;
+}
+
+.activity.type-edit{
+   color: #e27c64;
+ }
+
+.activity.type-delete{
+  color: #a7024e;
+}
+.activity p {
+  margin: 0;
+  position: relative;
+}
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 20px;
+}
+.user-avatar img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.activity-date {
+  color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 220px;
+}
+.activity-description {
+  font-weight: bold;
 }

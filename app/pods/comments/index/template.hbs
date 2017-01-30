@@ -6,33 +6,35 @@
   </div>
 </div>
 
-  <div class="ui comments">
-    <h3 class="ui dividing header">Comments</h3>
-    {{#each model.comments as |comment|}}
-      <div class="comment">
-        <a class="avatar">
-          <img src="/assets/images/sanctum_sanctorum.jpg">
-        </a>
-        <div class="content">
-          <a class="author">{{comment.user.email}}</a>
-          <div class="metadata">
-            <span class="date">{{comment.dateOfCreation}}</span>
-          </div>
-          <div class="text">
-            {{comment.body}}
-          </div>
-          <div class="actions">
-            {{#if comment.isAuthor}}
-              {{link-to 'edit' 'comments.edit' comment}}
-              <button {{action 'delete' comment}}>
-                delete
-              </button>
-            {{/if}}
-          </div>
+<div class="ui comments">
+  <h3 class="ui dividing header">Comments:</h3>
+  {{#each model.comments as |comment|}}
+    <div class="comment">
+      <a class="avatar">
+        <img src="/assets/images/sanctum_sanctorum.jpg">
+      </a>
+      <div class="content">
+        <div class="comment-actions">
+          {{#if comment.isAuthor}}
+            {{#link-to 'comments.edit' comment}}
+              <i class="edit icon"></i>
+            {{/link-to}}
+            <span {{action 'delete' comment.id}}>
+              <i class="ban icon"></i>
+            </span>
+          {{/if}}
+        </div>
+        <a class="author">{{comment.user.email}}</a>
+        <div class="metadata">
+          <span class="date">{{comment.dateOfCreation}}</span>
+        </div>
+        <div class="text">
+          {{comment.body}}
         </div>
       </div>
-    {{/each}}
+    </div>
+  {{/each}}
 
-    <!--todo: use comment-form component-->
-  </div>
-  {{!comment-form item=model.id buttonLabel='leave a comment' action='save'}}
+  <!--todo: use comment-form component-->
+</div>
+{{!comment-form item=model.id buttonLabel='leave a comment' action='save'}}

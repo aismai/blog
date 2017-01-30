@@ -8,28 +8,34 @@
   </div>
 {{/if}}
 
-<div class="ui items">
+<div class="posts">
   {{#each model.posts as |post|}}
-    <div class="item">
-      <div class="ui small image">
-        <img src="/assets/images/sanctum_sanctorum.jpg">
-      </div>
-      <div class="content post-content">
-        <div class="header">{{link-to post.title 'comments' post}}</div>
-        <div class="meta">
-          <span class="price">comments: {{post.comments.length}}</span>
-          {{#if model.isAuthor}}
-            {{link-to 'edit' 'posts.edit' post}}
-            <button {{action 'deletePost' post}}>
-              delete
-            </button>
-          {{/if}}
+    {{#link-to 'comments' post.id }}
+      <div class="post">
+        <div class="post-image">
+          <img src="/assets/images/sanctum_sanctorum.jpg">
         </div>
-        <div class="description">
-          <p>{{post.body}}</p>
+        <div class="post-content">
+          <div class="post-title">{{link-to post.title 'comments' post}}</div>
+          <div class="post-description">
+            <p>{{post.body}}</p>
+          </div>
+          <div class="meta">
+            <span class="post-comments">comments: {{post.comments.length}}</span>
+            <div class="post-actions">
+              {{#if model.isAuthor}}
+                {{#link-to 'posts.edit' post.id}}
+                  <i class="edit icon"></i>
+                {{/link-to}}
+                <span {{action 'deletePost' post}}>
+                  <i class="ban icon"></i>
+                </span>
+              {{/if}}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    {{/link-to}}
   {{/each}}
 </div>
 
