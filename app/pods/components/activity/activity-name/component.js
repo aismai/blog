@@ -16,10 +16,10 @@ export default Ember.Component.extend({
       'blog-delete':    'type-of-delete',
       'post-create':    'type-of-create',
       'post-edit':      'type-of-edit',
-      'post-delete':    'type-of-create',
+      'post-delete':    'type-of-delete',
       'comment-create': 'type-of-create',
       'comment-edit':   'type-of-edit',
-      'comment-delete': 'type-of-create',
+      'comment-delete': 'type-of-delete',
     };
     return `activity/${activityType[item.get('type')]}`;
   }
